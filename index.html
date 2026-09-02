@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>电子名片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "楷体", "KaiTi", serif;
+            background: #e8ecf2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 440px;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+            transition: transform 0.2s ease;
+            background: transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .bg-image {
+            width: 100%;
+            min-height: 85vh;
+            background-image: url('img/index_gb.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 0;
+            padding-bottom: 30px;
+        }
+
+        .bg-image::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(161, 184, 206, 0.2) 20%,
+                rgba(161, 184, 206, 0.5) 50%,
+                rgba(161, 184, 206, 0.85) 80%,
+                #A1B8CE 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .brand-bar {
+            padding: 20px 0 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .brand-icon {
+            width: 100%;
+            max-height: 150px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-icon img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25));
+        }
+
+        .info-area {
+            margin: 55vh 24px 0 24px;
+            padding: 22px 26px 18px 26px;
+            border: none;
+            border-radius: 20px;
+            background: #ffffff;
+            text-align: right;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            font-family: "楷体", "KaiTi", serif;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+            width: auto;
+            align-self: stretch;
+        }
+
+        .info-item {
+            margin-bottom: 5px;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+            color: #000000;
+        }
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-name {
+            font-size: 38px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .info-title,
+        .info-dept,
+        .info-contact,
+        .info-company,
+        .info-address {
+            font-size: 16px;
+            font-weight: 400;
+            color: #000000;
+        }
+
+        .info-company {
+            font-weight: 600;
+        }
+
+        .color-fill {
+            width: 100%;
+            background: linear-gradient(
+                to bottom,
+                #A1B8CE 0%,
+                #7593AF 25%,
+                #3b557a 50%,
+                #3b557a 75%,
+                #092145 100%
+            );
+            margin-top: -2px;
+            padding-top: 26px;
+            padding-bottom: 20px;
+            box-shadow: inset 0 15px 20px -10px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 0;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 16px 8px 16px;
+            gap: 10px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .actions .btn {
+            flex: 1 0 auto;
+            min-width: 52px;
+            padding: 7px 10px;
+            border-radius: 22px;
+            border: none;
+            background: rgba(255, 255, 255, 0.92);
+            color: #0a2e6e;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            white-space: nowrap;
+            font-family: "楷体", "KaiTi", serif;
+            backdrop-filter: blur(4px);
+        }
+
+        .actions .btn:hover {
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(255, 255, 255, 0.60);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.20);
+        }
+        .actions .btn:active {
+            transform: translateY(0px);
+        }
+        .actions .btn .emoji {
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .actions .btn-primary {
+            background: rgba(10, 46, 110, 0.88);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(4px);
+        }
+        .actions .btn-primary:hover {
+            background: rgba(10, 46, 110, 0.98);
+            border-color: rgba(255, 255, 255, 0.40);
+            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.35);
+        }
+
+        .share-row {
+            display: flex;
+            justify-content: center;
+            padding: 2px 16px 16px 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .share-row .btn-share {
+            padding: 7px 24px;
+            border-radius: 22px;
+            border: none;
+            background: rgba(255, 255, 255, 0.92);
+            color: #0a2e6e;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            font-family: "楷体", "KaiTi", serif;
+            backdrop-filter: blur(4px);
+            min-width: 100px;
+        }
+
+        .share-row .btn-share:hover {
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(255, 255, 255, 0.60);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.20);
+        }
+        .share-row .btn-share:active {
+            transform: translateY(0px);
+        }
+        .share-row .btn-share .emoji {
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .company-area {
+            margin: 0 24px 16px 24px;
+            padding: 0 0 16px 0;
+            border: none;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            font-family: "楷体", "KaiTi", serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .company-logo {
+            width: 100%;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 0 8px 0;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: auto;
+            max-height: 140px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .company-desc {
+            font-size: 16px;
+            line-height: 2.0;
+            color: #2c3e6b;
+            text-align: justify;
+            letter-spacing: 0.5px;
+            word-break: break-word;
+            padding: 0 22px 0 22px;
+        }
+
+        .company-desc .first-line {
+            display: block;
+            text-indent: 2em;
+        }
+
+        .company-website-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 14px 22px 8px 22px;
+            margin-top: 4px;
+        }
+
+        .company-website-row .footer-website {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0a2e6e;
+            cursor: pointer;
+            transition: color 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .company-website-row .footer-website:hover {
+            color: #13408a;
+        }
+        .company-website-row .footer-website .arrow {
+            font-size: 20px;
+            color: #0a2e6e;
+            line-height: 1;
+        }
+
+        .company-website-row .footer-copy-tip {
+            font-size: 12px;
+            color: #8a9bb8;
+            cursor: pointer;
+            border-bottom: 1px dashed #c8d2e0;
+            padding-bottom: 1px;
+            transition: color 0.2s;
+        }
+        .company-website-row .footer-copy-tip:hover {
+            color: #0a2e6e;
+        }
+
+        .company-qr-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4px 0 10px 0;
+        }
+
+        .company-qr-box {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8ecf2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .company-qr-label {
+            font-size: 11px;
+            color: #7a8aaa;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .company-address-phone {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 16px;
+            color: #2c3e6b;
+            line-height: 1.8;
+            padding: 0 22px 0 22px;
+            margin-top: 2px;
+        }
+
+        .company-address-phone .addr {
+            text-align: left;
+            flex-shrink: 1;
+        }
+
+        .company-address-phone .phone {
+            text-align: right;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .company-address-phone .label {
+            color: #7a8aaa;
+            font-weight: 400;
+        }
+
+        .company-post {
+            font-size: 16px;
+            color: #2c3e6b;
+            line-height: 1.8;
+            text-align: left;
+            padding: 0 22px 0 22px;
+            margin-top: 2px;
+        }
+        .company-post .label {
+            color: #7a8aaa;
+            font-weight: 400;
+        }
+
+        @media (max-width: 480px) {
+            .bg-image {
+                min-height: 80vh;
+                padding-bottom: 20px;
+            }
+            .bg-image::after {
+                height: 100px;
+            }
+            .brand-icon {
+                max-height: 120px;
+            }
+            .brand-icon img {
+                max-height: 120px;
+            }
+            .info-area {
+                margin: 50vh 16px 0 16px;
+                padding: 18px 20px 16px 20px;
+                border-radius: 16px;
+            }
+            .info-name {
+                font-size: 32px;
+            }
+            .info-title,
+            .info-dept,
+            .info-contact,
+            .info-company,
+            .info-address {
+                font-size: 15px;
+            }
+            .color-fill {
+                margin-top: -2px;
+                padding-top: 22px;
+                padding-bottom: 16px;
+            }
+            .company-area {
+                margin: 0 16px 14px 16px;
+                border-radius: 16px;
+            }
+            .company-logo {
+                padding: 10px 0 6px 0;
+            }
+            .company-logo img {
+                max-height: 110px;
+            }
+            .company-desc {
+                font-size: 15px;
+                line-height: 1.9;
+                padding: 0 18px 0 18px;
+            }
+            .company-website-row {
+                padding: 12px 18px 6px 18px;
+            }
+            .company-website-row .footer-website {
+                font-size: 14px;
+            }
+            .company-address-phone {
+                font-size: 14px;
+                padding: 0 18px 0 18px;
+            }
+            .company-post {
+                font-size: 14px;
+                padding: 0 18px 0 18px;
+            }
+            .company-qr-box {
+                width: 68px;
+                height: 68px;
+                padding: 4px;
+            }
+            .company-qr-label {
+                font-size: 10px;
+            }
+            .actions {
+                padding: 0 12px 6px 12px;
+                gap: 8px;
+            }
+            .actions .btn {
+                font-size: 11px;
+                padding: 6px 8px;
+                min-width: 44px;
+            }
+            .actions .btn .emoji {
+                font-size: 13px;
+            }
+            .share-row {
+                padding: 0 12px 12px 12px;
+            }
+            .share-row .btn-share {
+                font-size: 11px;
+                padding: 6px 18px;
+                min-width: 80px;
+            }
+            .share-row .btn-share .emoji {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .bg-image {
+                min-height: 75vh;
+                padding-bottom: 16px;
+            }
+            .bg-image::after {
+                height: 80px;
+            }
+            .brand-icon {
+                max-height: 100px;
+            }
+            .brand-icon img {
+                max-height: 100px;
+            }
+            .info-area {
+                margin: 45vh 12px 0 12px;
+                padding: 16px 16px 14px 16px;
+                border-radius: 14px;
+            }
+            .info-name {
+                font-size: 28px;
+            }
+            .info-title,
+            .info-dept,
+            .info-contact,
+            .info-company,
+            .info-address {
+                font-size: 14px;
+            }
+            .color-fill {
+                margin-top: -1px;
+                padding-top: 18px;
+                padding-bottom: 12px;
+            }
+            .company-area {
+                margin: 0 12px 12px 12px;
+                border-radius: 14px;
+            }
+            .company-logo img {
+                max-height: 90px;
+            }
+            .company-desc {
+                font-size: 14px;
+                line-height: 1.8;
+                padding: 0 14px 0 14px;
+            }
+            .company-website-row {
+                padding: 10px 14px 4px 14px;
+            }
+            .company-website-row .footer-website {
+                font-size: 13px;
+            }
+            .company-address-phone {
+                font-size: 13px;
+                padding: 0 14px 0 14px;
+            }
+            .company-post {
+                font-size: 13px;
+                padding: 0 14px 0 14px;
+            }
+            .company-qr-box {
+                width: 60px;
+                height: 60px;
+                padding: 4px;
+            }
+            .actions {
+                gap: 6px;
+            }
+            .actions .btn {
+                font-size: 10px;
+                padding: 5px 6px;
+                min-width: 38px;
+            }
+            .actions .btn .emoji {
+                font-size: 12px;
+            }
+            .share-row .btn-share {
+                font-size: 10px;
+                padding: 5px 14px;
+                min-width: 70px;
+            }
+            .share-row .btn-share .emoji {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <div class="bg-image">
+
+            <div class="brand-bar">
+                <div class="brand-icon">
+                    <img src="img/logo11.png" alt="宜春国控 Logo" />
+                </div>
+            </div>
+
+            <div class="info-area" id="infoArea">
+                <div class="info-item info-name">余浩</div>
+                <div class="info-item info-title">综合管理部部长</div>
+                <div class="info-item info-dept">检测设计</div>
+                <div class="info-item info-contact">17370565453</div>
+                <div class="info-item info-contact">17370565453@163.com</div>
+                <div class="info-item info-company">宜春市国有资本控股有限公司</div>
+                <div class="info-item info-address">地址：江西省宜春市袁州区经发大道</div>
+            </div>
+
+        </div>
+
+        <div class="color-fill">
+
+            <div class="actions">
+                <button class="btn btn-primary" id="saveBtn"><span class="emoji">💾</span> 保存至</button>
+                <button class="btn" id="callBtn"><span class="emoji">📞</span> 拨打电话</button>
+                <button class="btn" id="copyBtn"><span class="emoji">📋</span> 复制信息</button>
+                <button class="btn" id="qrBtn"><span class="emoji">📱</span> 二维码</button>
+            </div>
+
+            <div class="share-row">
+                <button class="btn-share" id="shareBtn"><span class="emoji">📤</span> 分享</button>
+            </div>
+
+            <div class="company-area">
+                <div class="company-logo">
+                    <img src="img/logo11.png" alt="宜春国控 Logo" />
+                </div>
+                <div class="company-desc">
+                    <span class="first-line">宜春市国有资本控股有限公司成立于2020年5月，是市属现代综合服务型国有企业，公司坚持以市场需求为导向，秉承"专注、可信、优质、高效"的服务宗旨，深耕三大业务板块："专业化检验检测服务"，业务涵盖建设工程检测、环境监测等专业技术服务。"全链条勘测设计服务"，业务涵盖工程建设项目咨询、勘察（含地灾及压覆矿产评估）设计、施工图设计审查、测绘地理信息、环境影响评价及环保验收等专业技术服务；"一站式人力资源服务"，业务涵盖就业咨询、招聘配置、人才引进、劳务派遣、劳务外包、职业培训、建筑领域三类人员、特种作业人员教育培训考试、网络技术，档案管理（涉密文件资料、涉密档案数字化加工）、广告制作等人才综合服务。</span>
+                </div>
+
+                <div class="company-website-row">
+                    <span class="footer-website" id="websiteLink">
+                        访问官网 <span class="arrow">›</span>
+                    </span>
+                    <span class="footer-copy-tip" id="copyTip">复制后到浏览器打开</span>
+                </div>
+
+                <div class="company-qr-wrap">
+                    <div class="company-qr-box">
+                        <img src="img/qrcode.png" alt="二维码" />
+                    </div>
+                    <div class="company-qr-label">扫码关注我们</div>
+                </div>
+
+                <div class="company-address-phone">
+                    <span class="addr"><span class="label">地址：</span>江西省宜春市经济技术开发区经发大道26号</span>
+                    <span class="phone"><span class="label">电话：</span>0795-3288195</span>
+                </div>
+
+                <div class="company-post">
+                    <span class="label">邮编：</span>336600
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            var WEBSITE_URL = 'http://www.ycsgkgs.com/ycsgkgs/index.html';
+
+            var websiteLink = document.getElementById('websiteLink');
+            var copyTip = document.getElementById('copyTip');
+
+            function copyWebsiteUrl() {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(WEBSITE_URL).then(function() {
+                        showToast('✅ 已复制：' + WEBSITE_URL);
+                    }).catch(function() {
+                        fallbackCopy(WEBSITE_URL);
+                    });
+                } else {
+                    fallbackCopy(WEBSITE_URL);
+                }
+            }
+
+            function fallbackCopy(text) {
+                var textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.left = '-9999px';
+                textarea.style.top = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                try {
+                    var ok = document.execCommand('copy');
+                    if (ok) {
+                        showToast('✅ 已复制：' + text);
+                    } else {
+                        showToast('⚠️ 复制失败，请手动复制');
+                    }
+                } catch (e) {
+                    showToast('⚠️ 复制失败，请手动复制');
+                }
+                document.body.removeChild(textarea);
+            }
+
+            function showToast(msg) {
+                var existing = document.querySelector('.toast-tip');
+                if (existing) existing.remove();
+
+                var toast = document.createElement('div');
+                toast.className = 'toast-tip';
+                toast.textContent = msg;
+                Object.assign(toast.style, {
+                    position: 'fixed',
+                    bottom: '30px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    background: 'rgba(10, 46, 110, 0.93)',
+                    color: '#fff',
+                    padding: '10px 26px',
+                    borderRadius: '30px',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    boxShadow: '0 8px 28px rgba(0,0,0,0.28)',
+                    zIndex: '9999',
+                    backdropFilter: 'blur(4px)',
+                    maxWidth: '90%',
+                    textAlign: 'center',
+                    transition: 'opacity 0.25s ease',
+                    letterSpacing: '0.3px',
+                    border: '1px solid rgba(255,255,255,0.12)'
+                });
+                document.body.appendChild(toast);
+                setTimeout(function() {
+                    toast.style.opacity = '0';
+                    setTimeout(function() { toast.remove(); }, 300);
+                }, 2000);
+            }
+
+            if (websiteLink) {
+                websiteLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    copyWebsiteUrl();
+                });
+            }
+
+            if (copyTip) {
+                copyTip.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    copyWebsiteUrl();
+                });
+            }
+
+            // ===== 复制全部信息 =====
+            var copyBtn = document.getElementById('copyBtn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    var name = document.querySelector('.info-name')?.textContent.trim() || '';
+                    var title = document.querySelector('.info-title')?.textContent.trim() || '';
+                    var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
+                    var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '';
+                    var email = document.querySelector('.info-contact:nth-of-type(2)')?.textContent.trim() || '';
+                    var company = document.querySelector('.info-company')?.textContent.trim() || '';
+                    var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
+
+                    var text =
+                        '姓名：' + name + '\n职务：' + title + '\n职位：' + dept + '\n电话：' + phone + '\n邮箱：' + email +
+                        '\n公司：' + company + '\n地址：' + addr;
+
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function() {
+                            showToast('✅ 全部信息已复制');
+                        }).catch(function() {
+                            fallbackCopy(text);
+                        });
+                    } else {
+                        fallbackCopy(text);
+                    }
+                });
+            }
+
+            // ===== 拨打电话 =====
+            var callBtn = document.getElementById('callBtn');
+            if (callBtn) {
+                callBtn.addEventListener('click', function() {
+                    var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '17370565453';
+                    if (confirm('即将拨打：' + phone)) {
+                        window.location.href = 'tel:' + phone;
+                    }
+                });
+            }
+
+            // ============================================================
+            // ===== 保存至 — 优先 Web Contacts API，降级为 vCard 下载 =====
+            // ============================================================
+            var saveBtn = document.getElementById('saveBtn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function() {
+                    // 提取联系人信息
+                    var name = document.querySelector('.info-name')?.textContent.trim() || '未知';
+                    var title = document.querySelector('.info-title')?.textContent.trim() || '';
+                    var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
+                    var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '';
+                    var email = document.querySelector('.info-contact:nth-of-type(2)')?.textContent.trim() || '';
+                    var company = document.querySelector('.info-company')?.textContent.trim() || '';
+                    var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
+
+                    // ----- 方案1: Web Contacts API (Android Chrome 等支持) -----
+                    if (navigator.contacts && navigator.contacts.save) {
+                        var contact = {
+                            name: [name],
+                            tel: [phone],
+                            email: [email],
+                            organization: [company],
+                            title: [title],
+                            address: [{
+                                street: addr,
+                                city: '',
+                                region: '',
+                                postalCode: '',
+                                country: ''
+                            }]
+                        };
+
+                        navigator.contacts.save(contact)
+                            .then(function() {
+                                showToast('✅ 已保存到通讯录');
+                            })
+                            .catch(function(err) {
+                                // 用户拒绝或API失败，降级到vCard
+                                console.warn('Contacts API 失败，降级到 vCard', err);
+                                downloadVCard(name, title, dept, phone, email, company, addr);
+                            });
+                        return;
+                    }
+
+                    // ----- 方案2: vCard 下载 (通用方案) -----
+                    downloadVCard(name, title, dept, phone, email, company, addr);
+                });
+
+                function downloadVCard(name, title, dept, phone, email, company, addr) {
+                    // 构建 vCard 3.0 格式
+                    var vcard = [
+                        'BEGIN:VCARD',
+                        'VERSION:3.0',
+                        'FN:' + name,
+                        'N:' + name + ';;;',
+                        'ORG:' + company,
+                        'TITLE:' + title + ' (' + dept + ')',
+                        'TEL;TYPE=CELL:' + phone,
+                        'EMAIL:' + email,
+                        'ADR;TYPE=WORK:;;' + addr,
+                        'END:VCARD'
+                    ].join('\r\n');
+
+                    try {
+                        var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+                        var url = URL.createObjectURL(blob);
+                        var link = document.createElement('a');
+                        link.href = url;
+                        link.download = name + '.vcf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(url);
+                        showToast('✅ 通讯录文件已下载，点击即可导入');
+                    } catch (e) {
+                        // 降级：使用 data URI
+                        try {
+                            var encoded = encodeURIComponent(vcard);
+                            window.location.href = 'data:text/vcard;charset=utf-8,' + encoded;
+                            showToast('✅ 通讯录文件已下载');
+                        } catch (e2) {
+                            // 最终降级：复制文本
+                            var text = '姓名：' + name + '\n电话：' + phone + '\n邮箱：' + email + '\n公司：' + company;
+                            fallbackCopy(text);
+                            showToast('⚠️ 已复制联系人信息，请手动保存');
+                        }
+                    }
+                }
+            }
+
+            // ===== 二维码按钮 =====
+            var qrBtn = document.getElementById('qrBtn');
+            if (qrBtn) {
+                qrBtn.addEventListener('click', function() {
+                    showToast('📱 扫码关注宜春国控');
+                });
+            }
+
+            // ===== 分享功能 =====
+            var shareBtn = document.getElementById('shareBtn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function() {
+                    var url = window.location.href;
+                    var title = '宜春国控 · 余浩 电子名片';
+                    var text = '宜春市国有资本控股有限公司 综合管理部部长 余浩\n电话：17370565453\n邮箱：17370565453@163.com';
+
+                    if (navigator.share) {
+                        navigator.share({
+                            title: title,
+                            text: text,
+                            url: url
+                        }).then(function() {
+                            // 成功
+                        }).catch(function(err) {
+                            if (err.name !== 'AbortError') {
+                                showToast('⚠️ 分享失败，请重试');
+                            }
+                        });
+                    } else {
+                        fallbackCopy(url);
+                        showToast('✅ 链接已复制，可粘贴到微信或浏览器');
+                    }
+                });
+            }
+
+        })();
+    </script>
+
+</body>
+</html>
