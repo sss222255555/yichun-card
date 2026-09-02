@@ -4,18 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>宜春国控 · 余浩 电子名片</title>
-    
+
     <!-- ===== Open Graph 标签（分享卡片预览） ===== -->
-    <meta property="og:title" content="宜春国控 · 余浩 电子名片" />
-    <meta property="og:description" content="宜春市国有资本控股有限公司 综合管理部部长 余浩 电话：17370565453" />
-    <!-- 分享预览图片使用背景图（index_gb.png） -->
+    <meta property="og:title" content="宜春国控" />
+    <meta property="og:description" content="向你推荐余浩的名片" />
     <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/index_gb.png" />
     <meta property="og:url" content="https://sss222255555.github.io/yichun-card/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <style>
-        /* ===== 全部样式（与您之前一致） ===== */
         * {
             margin: 0;
             padding: 0;
@@ -32,6 +30,7 @@
             padding: 20px;
         }
 
+        /* ===== 主卡片 ===== */
         .card {
             max-width: 440px;
             width: 100%;
@@ -41,11 +40,11 @@
             transition: transform 0.2s ease;
             background: transparent;
         }
-
         .card:hover {
             transform: translateY(-2px);
         }
 
+        /* ===== 背景图区域 ===== */
         .bg-image {
             width: 100%;
             min-height: 85vh;
@@ -60,7 +59,6 @@
             z-index: 0;
             padding-bottom: 30px;
         }
-
         .bg-image::after {
             content: '';
             position: absolute;
@@ -68,18 +66,17 @@
             left: 0;
             width: 100%;
             height: 120px;
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                rgba(161, 184, 206, 0.2) 20%,
-                rgba(161, 184, 206, 0.5) 50%,
-                rgba(161, 184, 206, 0.85) 80%,
-                #A1B8CE 100%
-            );
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(161, 184, 206, 0.2) 20%,
+                    rgba(161, 184, 206, 0.5) 50%,
+                    rgba(161, 184, 206, 0.85) 80%,
+                    #A1B8CE 100%);
             pointer-events: none;
             z-index: 1;
         }
 
+        /* ===== 品牌 Logo ===== */
         .brand-bar {
             padding: 20px 0 0 0;
             display: flex;
@@ -90,7 +87,6 @@
             flex-shrink: 0;
             width: 100%;
         }
-
         .brand-icon {
             width: 100%;
             max-height: 150px;
@@ -99,7 +95,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .brand-icon img {
             width: 100%;
             height: auto;
@@ -109,6 +104,7 @@
             filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25));
         }
 
+        /* ===== 个人信息区域 ===== */
         .info-area {
             margin: 55vh 24px 0 24px;
             padding: 22px 26px 18px 26px;
@@ -124,7 +120,6 @@
             width: auto;
             align-self: stretch;
         }
-
         .info-item {
             margin-bottom: 5px;
             line-height: 1.4;
@@ -134,7 +129,6 @@
         .info-item:last-child {
             margin-bottom: 0;
         }
-
         .info-name {
             font-size: 38px;
             font-weight: 700;
@@ -142,7 +136,6 @@
             letter-spacing: 2px;
             margin-bottom: 10px;
         }
-
         .info-title,
         .info-dept,
         .info-contact,
@@ -152,21 +145,19 @@
             font-weight: 400;
             color: #000000;
         }
-
         .info-company {
             font-weight: 600;
         }
 
+        /* ===== 底部渐变填充 ===== */
         .color-fill {
             width: 100%;
-            background: linear-gradient(
-                to bottom,
-                #A1B8CE 0%,
-                #7593AF 25%,
-                #3b557a 50%,
-                #3b557a 75%,
-                #092145 100%
-            );
+            background: linear-gradient(to bottom,
+                    #A1B8CE 0%,
+                    #7593AF 25%,
+                    #3b557a 50%,
+                    #3b557a 75%,
+                    #092145 100%);
             margin-top: -2px;
             padding-top: 26px;
             padding-bottom: 20px;
@@ -176,6 +167,7 @@
             border-radius: 0 0 24px 24px;
         }
 
+        /* ===== 操作按钮 ===== */
         .actions {
             display: flex;
             flex-wrap: wrap;
@@ -185,7 +177,6 @@
             position: relative;
             z-index: 2;
         }
-
         .actions .btn {
             flex: 1 0 auto;
             min-width: 52px;
@@ -208,7 +199,6 @@
             font-family: "楷体", "KaiTi", serif;
             backdrop-filter: blur(4px);
         }
-
         .actions .btn:hover {
             background: rgba(255, 255, 255, 0.98);
             border-color: rgba(255, 255, 255, 0.60);
@@ -222,7 +212,6 @@
             font-size: 14px;
             line-height: 1;
         }
-
         .actions .btn-primary {
             background: rgba(10, 46, 110, 0.88);
             color: #ffffff;
@@ -235,6 +224,7 @@
             box-shadow: 0 6px 18px rgba(10, 46, 110, 0.35);
         }
 
+        /* ===== 分享按钮行 ===== */
         .share-row {
             display: flex;
             justify-content: center;
@@ -242,7 +232,6 @@
             position: relative;
             z-index: 2;
         }
-
         .share-row .btn-share {
             padding: 7px 24px;
             border-radius: 22px;
@@ -263,7 +252,6 @@
             backdrop-filter: blur(4px);
             min-width: 100px;
         }
-
         .share-row .btn-share:hover {
             background: rgba(255, 255, 255, 0.98);
             border-color: rgba(255, 255, 255, 0.60);
@@ -278,6 +266,7 @@
             line-height: 1;
         }
 
+        /* ===== 公司介绍区域 ===== */
         .company-area {
             margin: 0 24px 16px 24px;
             padding: 0 0 16px 0;
@@ -290,7 +279,6 @@
             position: relative;
             z-index: 2;
         }
-
         .company-logo {
             width: 100%;
             background: transparent;
@@ -299,7 +287,6 @@
             align-items: center;
             padding: 12px 0 8px 0;
         }
-
         .company-logo img {
             width: 100%;
             height: auto;
@@ -307,7 +294,6 @@
             object-fit: contain;
             display: block;
         }
-
         .company-desc {
             font-size: 16px;
             line-height: 2.0;
@@ -317,12 +303,10 @@
             word-break: break-word;
             padding: 0 22px 0 22px;
         }
-
         .company-desc .first-line {
             display: block;
             text-indent: 2em;
         }
-
         .company-website-row {
             display: flex;
             align-items: center;
@@ -332,7 +316,6 @@
             padding: 14px 22px 8px 22px;
             margin-top: 4px;
         }
-
         .company-website-row .footer-website {
             font-size: 16px;
             font-weight: 600;
@@ -352,7 +335,6 @@
             color: #0a2e6e;
             line-height: 1;
         }
-
         .company-website-row .footer-copy-tip {
             font-size: 12px;
             color: #8a9bb8;
@@ -364,14 +346,12 @@
         .company-website-row .footer-copy-tip:hover {
             color: #0a2e6e;
         }
-
         .company-qr-wrap {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 4px 0 10px 0;
         }
-
         .company-qr-box {
             width: 80px;
             height: 80px;
@@ -384,21 +364,18 @@
             align-items: center;
             justify-content: center;
         }
-
         .company-qr-box img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
         }
-
         .company-qr-label {
             font-size: 11px;
             color: #7a8aaa;
             margin-top: 4px;
             letter-spacing: 0.5px;
         }
-
         .company-address-phone {
             display: flex;
             justify-content: space-between;
@@ -409,23 +386,19 @@
             padding: 0 22px 0 22px;
             margin-top: 2px;
         }
-
         .company-address-phone .addr {
             text-align: left;
             flex-shrink: 1;
         }
-
         .company-address-phone .phone {
             text-align: right;
             flex-shrink: 0;
             margin-left: 16px;
         }
-
         .company-address-phone .label {
             color: #7a8aaa;
             font-weight: 400;
         }
-
         .company-post {
             font-size: 16px;
             color: #2c3e6b;
@@ -439,6 +412,196 @@
             font-weight: 400;
         }
 
+        /* ===== Toast 提示 ===== */
+        .toast-tip {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 46, 110, 0.93);
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+            max-width: 90%;
+            text-align: center;
+            transition: opacity 0.25s ease;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-family: "楷体", "KaiTi", serif;
+        }
+
+        /* ===== 分享卡片预览模态框 ===== */
+        .share-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            animation: fadeIn 0.3s ease;
+        }
+        .share-modal-overlay.active {
+            display: flex;
+        }
+        .share-modal {
+            background: #ffffff;
+            border-radius: 28px;
+            max-width: 400px;
+            width: 100%;
+            padding: 28px 24px 24px 24px;
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+            animation: slideUp 0.35s ease;
+            position: relative;
+        }
+        .share-modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a2a4a;
+            text-align: center;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        .share-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 24px;
+            color: #8a9bb8;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .share-modal-close:hover {
+            color: #1a2a4a;
+        }
+
+        /* —— 分享卡片预览 —— */
+        .share-card-preview {
+            background: #f5f7fa;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+            border: 1px solid #e8ecf2;
+        }
+        .share-card-preview .preview-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #d0d8e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .share-card-preview .preview-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .share-card-preview .preview-body {
+            padding: 12px 16px 14px 16px;
+            background: #ffffff;
+        }
+        .share-card-preview .preview-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0a2e6e;
+            margin-bottom: 4px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        .share-card-preview .preview-desc {
+            font-size: 13px;
+            color: #5a6e8a;
+            line-height: 1.5;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        .share-card-preview .preview-source {
+            font-size: 11px;
+            color: #8a9bb8;
+            margin-top: 6px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+
+        /* —— 分享操作按钮 —— */
+        .share-modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+        }
+        .share-modal-actions .sm-btn {
+            flex: 1;
+            padding: 10px 0;
+            border-radius: 22px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: "楷体", "KaiTi", serif;
+        }
+        .share-modal-actions .sm-btn-primary {
+            background: #0a2e6e;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(10, 46, 110, 0.25);
+        }
+        .share-modal-actions .sm-btn-primary:hover {
+            background: #13408a;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.35);
+        }
+        .share-modal-actions .sm-btn-secondary {
+            background: #eef1f5;
+            color: #1a2a4a;
+        }
+        .share-modal-actions .sm-btn-secondary:hover {
+            background: #e2e7ed;
+            transform: translateY(-1px);
+        }
+        .share-modal-actions .sm-btn .emoji {
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        /* ===== 动画 ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px) scale(0.96);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ===== 响应式 ===== */
         @media (max-width: 480px) {
             .bg-image {
                 min-height: 80vh;
@@ -533,6 +696,29 @@
             .share-row .btn-share .emoji {
                 font-size: 13px;
             }
+            .share-modal {
+                padding: 20px 16px 20px 16px;
+                border-radius: 22px;
+            }
+            .share-modal-title {
+                font-size: 15px;
+            }
+            .share-card-preview .preview-body {
+                padding: 10px 14px 12px 14px;
+            }
+            .share-card-preview .preview-title {
+                font-size: 15px;
+            }
+            .share-card-preview .preview-desc {
+                font-size: 12px;
+            }
+            .share-modal-actions .sm-btn {
+                font-size: 13px;
+                padding: 9px 0;
+            }
+            .share-modal-actions .sm-btn .emoji {
+                font-size: 15px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -619,21 +805,48 @@
             .share-row .btn-share .emoji {
                 font-size: 12px;
             }
+            .share-modal {
+                padding: 16px 12px 16px 12px;
+                border-radius: 18px;
+            }
+            .share-modal-title {
+                font-size: 14px;
+            }
+            .share-card-preview .preview-body {
+                padding: 8px 12px 10px 12px;
+            }
+            .share-card-preview .preview-title {
+                font-size: 14px;
+            }
+            .share-card-preview .preview-desc {
+                font-size: 11px;
+            }
+            .share-modal-actions .sm-btn {
+                font-size: 12px;
+                padding: 8px 0;
+            }
+            .share-modal-actions .sm-btn .emoji {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ==================== 主名片 ==================== -->
     <div class="card">
 
+        <!-- 背景图区域 -->
         <div class="bg-image">
 
+            <!-- Logo -->
             <div class="brand-bar">
                 <div class="brand-icon">
                     <img src="img/logo11.png" alt="宜春国控 Logo" />
                 </div>
             </div>
 
+            <!-- 个人信息 -->
             <div class="info-area" id="infoArea">
                 <div class="info-item info-name">余浩</div>
                 <div class="info-item info-title">综合管理部部长</div>
@@ -646,8 +859,10 @@
 
         </div>
 
+        <!-- 底部渐变填充 -->
         <div class="color-fill">
 
+            <!-- 操作按钮 -->
             <div class="actions">
                 <button class="btn btn-primary" id="saveBtn"><span class="emoji">💾</span> 保存至</button>
                 <button class="btn" id="callBtn"><span class="emoji">📞</span> 拨打电话</button>
@@ -655,10 +870,12 @@
                 <button class="btn" id="qrBtn"><span class="emoji">📱</span> 二维码</button>
             </div>
 
+            <!-- 分享按钮（触发模态框） -->
             <div class="share-row">
                 <button class="btn-share" id="shareBtn"><span class="emoji">📤</span> 分享</button>
             </div>
 
+            <!-- 公司介绍 -->
             <div class="company-area">
                 <div class="company-logo">
                     <img src="img/logo11.png" alt="宜春国控 Logo" />
@@ -695,28 +912,97 @@
 
     </div>
 
+    <!-- ==================== 分享卡片预览模态框 ==================== -->
+    <div class="share-modal-overlay" id="shareModalOverlay">
+        <div class="share-modal">
+
+            <!-- 关闭按钮 -->
+            <button class="share-modal-close" id="shareModalClose">✕</button>
+
+            <!-- 标题 -->
+            <div class="share-modal-title">📤 分享名片</div>
+
+            <!-- 卡片预览 -->
+            <div class="share-card-preview">
+                <div class="preview-img">
+                    <img src="img/index_gb.png" alt="分享卡片预览" />
+                </div>
+                <div class="preview-body">
+                    <div class="preview-title">宜春国控</div>
+                    <div class="preview-desc">向你推荐余浩的名片 · 综合管理部部长</div>
+                    <div class="preview-source">来自 宜春市国有资本控股有限公司</div>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="share-modal-actions">
+                <button class="sm-btn sm-btn-secondary" id="modalCopyLinkBtn">
+                    <span class="emoji">📋</span> 复制链接
+                </button>
+                <button class="sm-btn sm-btn-primary" id="modalShareBtn">
+                    <span class="emoji">📤</span> 分享
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================== JavaScript ==================== -->
     <script>
         (function() {
             'use strict';
 
+            // ---------- 配置 ----------
             var WEBSITE_URL = 'http://www.ycsgkgs.com/ycsgkgs/index.html';
+            var PAGE_URL = window.location.href;
+            var SHARE_TITLE = '宜春国控';
+            var SHARE_DESC = '向你推荐余浩的名片 · 综合管理部部长';
+            var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/index_gb.png';
 
+            // ---------- DOM 引用 ----------
             var websiteLink = document.getElementById('websiteLink');
             var copyTip = document.getElementById('copyTip');
+            var copyBtn = document.getElementById('copyBtn');
+            var callBtn = document.getElementById('callBtn');
+            var saveBtn = document.getElementById('saveBtn');
+            var qrBtn = document.getElementById('qrBtn');
+            var shareBtn = document.getElementById('shareBtn');
 
-            function copyWebsiteUrl() {
+            // 模态框
+            var modalOverlay = document.getElementById('shareModalOverlay');
+            var modalClose = document.getElementById('shareModalClose');
+            var modalCopyLinkBtn = document.getElementById('modalCopyLinkBtn');
+            var modalShareBtn = document.getElementById('modalShareBtn');
+
+            // ---------- Toast ----------
+            function showToast(msg) {
+                var existing = document.querySelector('.toast-tip');
+                if (existing) existing.remove();
+
+                var toast = document.createElement('div');
+                toast.className = 'toast-tip';
+                toast.textContent = msg;
+                document.body.appendChild(toast);
+                setTimeout(function() {
+                    toast.style.opacity = '0';
+                    setTimeout(function() { toast.remove(); }, 300);
+                }, 2000);
+            }
+
+            // ---------- 复制文本（兼容） ----------
+            function copyText(text, successMsg) {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(WEBSITE_URL).then(function() {
-                        showToast('✅ 已复制：' + WEBSITE_URL);
+                    navigator.clipboard.writeText(text).then(function() {
+                        showToast(successMsg || '✅ 已复制');
                     }).catch(function() {
-                        fallbackCopy(WEBSITE_URL);
+                        fallbackCopy(text, successMsg);
                     });
                 } else {
-                    fallbackCopy(WEBSITE_URL);
+                    fallbackCopy(text, successMsg);
                 }
             }
 
-            function fallbackCopy(text) {
+            function fallbackCopy(text, successMsg) {
                 var textarea = document.createElement('textarea');
                 textarea.value = text;
                 textarea.style.position = 'fixed';
@@ -728,7 +1014,7 @@
                 try {
                     var ok = document.execCommand('copy');
                     if (ok) {
-                        showToast('✅ 已复制：' + text);
+                        showToast(successMsg || '✅ 已复制');
                     } else {
                         showToast('⚠️ 复制失败，请手动复制');
                     }
@@ -738,177 +1024,214 @@
                 document.body.removeChild(textarea);
             }
 
-            function showToast(msg) {
-                var existing = document.querySelector('.toast-tip');
-                if (existing) existing.remove();
-
-                var toast = document.createElement('div');
-                toast.className = 'toast-tip';
-                toast.textContent = msg;
-                Object.assign(toast.style, {
-                    position: 'fixed',
-                    bottom: '30px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    background: 'rgba(10, 46, 110, 0.93)',
-                    color: '#fff',
-                    padding: '10px 26px',
-                    borderRadius: '30px',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    boxShadow: '0 8px 28px rgba(0,0,0,0.28)',
-                    zIndex: '9999',
-                    backdropFilter: 'blur(4px)',
-                    maxWidth: '90%',
-                    textAlign: 'center',
-                    transition: 'opacity 0.25s ease',
-                    letterSpacing: '0.3px',
-                    border: '1px solid rgba(255,255,255,0.12)'
-                });
-                document.body.appendChild(toast);
-                setTimeout(function() {
-                    toast.style.opacity = '0';
-                    setTimeout(function() { toast.remove(); }, 300);
-                }, 2000);
+            // ---------- 获取联系人信息 ----------
+            function getContactInfo() {
+                var name = document.querySelector('.info-name')?.textContent.trim() || '未知';
+                var title = document.querySelector('.info-title')?.textContent.trim() || '';
+                var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
+                var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '';
+                var email = document.querySelector('.info-contact:nth-of-type(2)')?.textContent.trim() || '';
+                var company = document.querySelector('.info-company')?.textContent.trim() || '';
+                var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
+                return { name, title, dept, phone, email, company, addr };
             }
 
+            // ---------- 复制官网链接 ----------
             if (websiteLink) {
                 websiteLink.addEventListener('click', function(e) {
                     e.preventDefault();
-                    copyWebsiteUrl();
+                    copyText(WEBSITE_URL, '✅ 已复制官网链接');
                 });
             }
-
             if (copyTip) {
                 copyTip.addEventListener('click', function(e) {
                     e.preventDefault();
-                    copyWebsiteUrl();
+                    copyText(WEBSITE_URL, '✅ 已复制官网链接');
                 });
             }
 
-            // ===== 复制全部信息 =====
-            var copyBtn = document.getElementById('copyBtn');
+            // ---------- 复制全部信息 ----------
             if (copyBtn) {
                 copyBtn.addEventListener('click', function() {
-                    var name = document.querySelector('.info-name')?.textContent.trim() || '';
-                    var title = document.querySelector('.info-title')?.textContent.trim() || '';
-                    var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
-                    var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '';
-                    var email = document.querySelector('.info-contact:nth-of-type(2)')?.textContent.trim() || '';
-                    var company = document.querySelector('.info-company')?.textContent.trim() || '';
-                    var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
-
+                    var info = getContactInfo();
                     var text =
-                        '姓名：' + name + '\n职务：' + title + '\n职位：' + dept + '\n电话：' + phone + '\n邮箱：' + email +
-                        '\n公司：' + company + '\n地址：' + addr;
-
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(text).then(function() {
-                            showToast('✅ 全部信息已复制');
-                        }).catch(function() {
-                            fallbackCopy(text);
-                        });
-                    } else {
-                        fallbackCopy(text);
-                    }
+                        '姓名：' + info.name +
+                        '\n职务：' + info.title +
+                        '\n职位：' + info.dept +
+                        '\n电话：' + info.phone +
+                        '\n邮箱：' + info.email +
+                        '\n公司：' + info.company +
+                        '\n地址：' + info.addr;
+                    copyText(text, '✅ 全部信息已复制');
                 });
             }
 
-            // ===== 拨打电话 =====
-            var callBtn = document.getElementById('callBtn');
+            // ---------- 拨打电话 ----------
             if (callBtn) {
                 callBtn.addEventListener('click', function() {
-                    var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '17370565453';
+                    var info = getContactInfo();
+                    var phone = info.phone || '17370565453';
                     if (confirm('即将拨打：' + phone)) {
                         window.location.href = 'tel:' + phone;
                     }
                 });
             }
 
-            // ===== 保存至 (vCard) =====
-            var saveBtn = document.getElementById('saveBtn');
+            // ---------- 保存至通讯录 (vCard) ----------
             if (saveBtn) {
                 saveBtn.addEventListener('click', function() {
-                    var name = document.querySelector('.info-name')?.textContent.trim() || '未知';
-                    var title = document.querySelector('.info-title')?.textContent.trim() || '';
-                    var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
-                    var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '';
-                    var email = document.querySelector('.info-contact:nth-of-type(2)')?.textContent.trim() || '';
-                    var company = document.querySelector('.info-company')?.textContent.trim() || '';
-                    var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
-
+                    var info = getContactInfo();
                     if (navigator.contacts && navigator.contacts.save) {
                         var contact = {
-                            name: [name],
-                            tel: [phone],
-                            email: [email],
-                            organization: [company],
-                            title: [title],
-                            address: [{ street: addr }]
+                            name: [info.name],
+                            tel: [info.phone],
+                            email: [info.email],
+                            organization: [info.company],
+                            title: [info.title],
+                            address: [{ street: info.addr }]
                         };
                         navigator.contacts.save(contact)
-                            .then(() => showToast('✅ 已保存到通讯录'))
-                            .catch(() => downloadVCard(name, title, dept, phone, email, company, addr));
+                            .then(function() { showToast('✅ 已保存到通讯录'); })
+                            .catch(function() { downloadVCard(info); });
                     } else {
-                        downloadVCard(name, title, dept, phone, email, company, addr);
+                        downloadVCard(info);
                     }
                 });
 
-                function downloadVCard(name, title, dept, phone, email, company, addr) {
+                function downloadVCard(info) {
                     var vcard = [
-                        'BEGIN:VCARD', 'VERSION:3.0', 'FN:' + name,
-                        'N:' + name + ';;;', 'ORG:' + company,
-                        'TITLE:' + title + ' (' + dept + ')',
-                        'TEL;TYPE=CELL:' + phone, 'EMAIL:' + email,
-                        'ADR;TYPE=WORK:;;' + addr, 'END:VCARD'
+                        'BEGIN:VCARD',
+                        'VERSION:3.0',
+                        'FN:' + info.name,
+                        'N:' + info.name + ';;;',
+                        'ORG:' + info.company,
+                        'TITLE:' + info.title + ' (' + info.dept + ')',
+                        'TEL;TYPE=CELL:' + info.phone,
+                        'EMAIL:' + info.email,
+                        'ADR;TYPE=WORK:;;' + info.addr,
+                        'END:VCARD'
                     ].join('\r\n');
                     try {
                         var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
                         var url = URL.createObjectURL(blob);
                         var link = document.createElement('a');
                         link.href = url;
-                        link.download = name + '.vcf';
+                        link.download = info.name + '.vcf';
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
                         URL.revokeObjectURL(url);
                         showToast('✅ 通讯录文件已下载');
                     } catch (e) {
-                        var text = '姓名：' + name + '\n电话：' + phone + '\n邮箱：' + email + '\n公司：' + company;
-                        fallbackCopy(text);
-                        showToast('⚠️ 已复制联系人信息，请手动保存');
+                        var text = '姓名：' + info.name + '\n电话：' + info.phone + '\n邮箱：' + info.email + '\n公司：' + info
+                            .company;
+                        copyText(text, '⚠️ 已复制联系人信息，请手动保存');
                     }
                 }
             }
 
-            // ===== 二维码按钮 =====
-            var qrBtn = document.getElementById('qrBtn');
+            // ---------- 二维码按钮 ----------
             if (qrBtn) {
                 qrBtn.addEventListener('click', function() {
                     showToast('📱 扫码关注宜春国控');
                 });
             }
 
-            // ===== 分享功能（优先原生分享） =====
-            var shareBtn = document.getElementById('shareBtn');
-            if (shareBtn) {
-                shareBtn.addEventListener('click', function() {
-                    var url = window.location.href;
-                    var title = '宜春国控 · 余浩 电子名片';
-                    var text = '宜春市国有资本控股有限公司 综合管理部部长 余浩\n电话：17370565453\n邮箱：17370565453@163.com';
+            // ============================================================
+            //  ★★★ 分享功能 —— 带卡片预览模态框 ★★★
+            // ============================================================
 
+            // ---------- 打开模态框 ----------
+            function openShareModal() {
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // ---------- 关闭模态框 ----------
+            function closeShareModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // 点击遮罩关闭
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', function(e) {
+                    if (e.target === modalOverlay) {
+                        closeShareModal();
+                    }
+                });
+            }
+            if (modalClose) {
+                modalClose.addEventListener('click', closeShareModal);
+            }
+
+            // ---------- 模态框：复制链接 ----------
+            if (modalCopyLinkBtn) {
+                modalCopyLinkBtn.addEventListener('click', function() {
+                    copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享');
+                    closeShareModal();
+                });
+            }
+
+            // ---------- 模态框：分享（优先 Web Share API） ----------
+            if (modalShareBtn) {
+                modalShareBtn.addEventListener('click', function() {
+                    // 先关闭模态框
+                    closeShareModal();
+
+                    // 检测是否支持 Web Share API
                     if (navigator.share) {
-                        navigator.share({ title: title, text: text, url: url })
-                            .then(() => {})
-                            .catch(err => { if (err.name !== 'AbortError') showToast('⚠️ 分享失败，请重试'); });
+                        navigator.share({
+                            title: SHARE_TITLE,
+                            text: SHARE_DESC,
+                            url: PAGE_URL,
+                        }).catch(function(err) {
+                            if (err.name !== 'AbortError') {
+                                // 如果分享失败，降级为复制链接
+                                copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享');
+                            }
+                        });
                     } else {
-                        fallbackCopy(url);
-                        showToast('✅ 链接已复制，可粘贴到微信或浏览器');
+                        // 不支持原生分享 → 复制链接
+                        copyText(PAGE_URL, '✅ 链接已复制，可粘贴到微信或浏览器');
                     }
                 });
             }
 
+            // ---------- 主分享按钮 ----------
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function() {
+                    // 检测是否支持 Web Share API
+                    if (navigator.share) {
+                        // 支持原生分享：直接调用，不弹模态框（更流畅）
+                        navigator.share({
+                            title: SHARE_TITLE,
+                            text: SHARE_DESC,
+                            url: PAGE_URL,
+                        }).catch(function(err) {
+                            if (err.name !== 'AbortError') {
+                                // 分享失败，降级为模态框
+                                openShareModal();
+                            }
+                        });
+                    } else {
+                        // 不支持原生分享 → 打开模态框，让用户选择复制链接或分享
+                        openShareModal();
+                    }
+                });
+            }
+
+            // ---------- ESC 关闭模态框 ----------
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeShareModal();
+                }
+            });
+
+            console.log('✅ 分享功能已加载（含卡片预览模态框）');
+
         })();
     </script>
+
 </body>
 </html>
