@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>宜春国控 · 余浩 电子名片</title>
 
-    <!-- Open Graph 标签（微信分享卡片） -->
+    <!-- ===== Open Graph 标签（微信/社交分享卡片） ===== -->
     <meta property="og:title" content="宜春国控·余浩 电子名片" />
     <meta property="og:description" content="向你推荐了余浩的名片" />
-    <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/123.png" />
+    <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/share-big.png" />
+    <!-- 显式声明图片宽高，帮助微信识别为大图 -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://sss222255555.github.io/yichun-card/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="宜春国控" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="image_src" href="https://sss222255555.github.io/yichun-card/img/123.png" />
+
+    <!-- ===== 微信分享卡片备用图片 ===== -->
+    <link rel="image_src" href="https://sss222255555.github.io/yichun-card/img/share-big.png" />
 
     <style>
         /* ===== 基础重置 ===== */
@@ -86,7 +89,7 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px) scale(0.96); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
-        /* ===== 响应式（完整） ===== */
+        /* ===== 响应式 ===== */
         @media (max-width: 480px) {
             .bg-image { min-height: 80vh; padding-bottom: 20px; }
             .bg-image::after { height: 100px; }
@@ -153,9 +156,11 @@
     </style>
 </head>
 <body>
+    <!-- 隐藏图片帮助微信爬虫 -->
     <div class="hidden-share-image">
-        <img src="https://sss222255555.github.io/yichun-card/img/123.png" alt="分享预览图" />
+        <img src="https://sss222255555.github.io/yichun-card/img/share-big.png" alt="分享预览图" />
     </div>
+
     <div class="card">
         <div class="bg-image">
             <div class="brand-bar">
@@ -203,12 +208,13 @@
         </div>
     </div>
 
+    <!-- 分享预览模态框 -->
     <div class="share-modal-overlay" id="shareModalOverlay">
         <div class="share-modal">
             <button class="share-modal-close" id="shareModalClose">✕</button>
             <div class="share-modal-title">📤 分享名片</div>
             <div class="share-card-preview">
-                <div class="preview-img"><img src="img/123.png" alt="分享预览" /></div>
+                <div class="preview-img"><img src="img/share-big.png" alt="分享预览" /></div>
                 <div class="preview-body">
                     <div class="preview-title">宜春国控·余浩 电子名片</div>
                     <div class="preview-desc">向你推荐了余浩的名片</div>
@@ -229,7 +235,7 @@
             var PAGE_URL = window.location.href;
             var SHARE_TITLE = '宜春国控·余浩 电子名片';
             var SHARE_DESC = '向你推荐了余浩的名片';
-            var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/123.png';
+            var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/share-big.png';
 
             // DOM 引用
             var websiteLink = document.getElementById('websiteLink');
