@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>宜春国控 · 余浩 电子名片</title>
 
-    <!-- ===== Open Graph 标签（微信/社交分享卡片） ===== -->
-    <meta property="og:title" content="宜春国控·余浩" />
+    <!-- Open Graph 标签（微信分享卡片） -->
+    <meta property="og:title" content="宜春国控·余浩 电子名片" />
     <meta property="og:description" content="向你推荐了余浩的名片" />
-    <!-- 分享图片：使用 123.png，建议尺寸 1200x630，需确保文件存在且可访问 -->
     <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/123.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -16,862 +15,152 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="宜春国控" />
     <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- ===== 微信分享卡片备用图片（隐藏的 img 标签，帮助微信爬虫识别） ===== -->
     <link rel="image_src" href="https://sss222255555.github.io/yichun-card/img/123.png" />
 
     <style>
         /* ===== 基础重置 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "楷体","KaiTi",serif; background: #e8ecf2; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .card { max-width: 440px; width: 100%; border-radius: 24px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.12); background: transparent; }
+        .bg-image { width: 100%; min-height: 85vh; background-image: url('img/index_gb.png'); background-size: cover; background-position: center 30%; background-repeat: no-repeat; position: relative; display: flex; flex-direction: column; align-items: center; z-index: 0; padding-bottom: 30px; }
+        .bg-image::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 120px; background: linear-gradient(to bottom, transparent 0%, rgba(161,184,206,0.2) 20%, rgba(161,184,206,0.5) 50%, rgba(161,184,206,0.85) 80%, #A1B8CE 100%); pointer-events: none; z-index: 1; }
+        .brand-bar { padding: 20px 0 0 0; display: flex; justify-content: center; align-items: center; position: relative; z-index: 2; width: 100%; }
+        .brand-icon { width: 100%; max-height: 150px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .brand-icon img { width: 100%; height: auto; max-height: 150px; object-fit: contain; display: block; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.25)); }
+        .info-area { margin: 55vh 24px 0 24px; padding: 22px 26px 18px 26px; border-radius: 20px; background: #fff; text-align: right; box-shadow: 0 4px 16px rgba(0,0,0,0.12); font-family: "楷体","KaiTi",serif; position: relative; z-index: 2; align-self: stretch; }
+        .info-item { margin-bottom: 5px; line-height: 1.4; letter-spacing: 0.5px; color: #000; }
+        .info-name { font-size: 38px; font-weight: 700; color: #000; letter-spacing: 2px; margin-bottom: 10px; }
+        .info-title, .info-dept, .info-contact, .info-company, .info-address { font-size: 16px; font-weight: 400; color: #000; }
+        .info-company { font-weight: 600; }
+        .color-fill { width: 100%; background: linear-gradient(to bottom, #A1B8CE 0%, #7593AF 25%, #3b557a 50%, #3b557a 75%, #092145 100%); margin-top: -2px; padding-top: 26px; padding-bottom: 20px; box-shadow: inset 0 15px 20px -10px rgba(0,0,0,0.4); border-radius: 0 0 24px 24px; }
+        .actions { display: flex; flex-wrap: wrap; padding: 0 16px 8px 16px; gap: 10px; justify-content: center; position: relative; z-index: 2; }
+        .actions .btn { flex: 1 0 auto; min-width: 52px; padding: 7px 10px; border-radius: 22px; border: none; background: rgba(255,255,255,0.92); color: #0a2e6e; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.10); border: 1px solid rgba(255,255,255,0.30); white-space: nowrap; font-family: "楷体","KaiTi",serif; backdrop-filter: blur(4px); }
+        .actions .btn:hover { background: rgba(255,255,255,0.98); border-color: rgba(255,255,255,0.60); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(10,46,110,0.20); }
+        .actions .btn-primary { background: rgba(10,46,110,0.88); color: #fff; border-color: rgba(255,255,255,0.20); }
+        .actions .btn-primary:hover { background: rgba(10,46,110,0.98); border-color: rgba(255,255,255,0.40); box-shadow: 0 6px 18px rgba(10,46,110,0.35); }
+        .share-row { display: flex; justify-content: center; padding: 2px 16px 16px 16px; position: relative; z-index: 2; }
+        .share-row .btn-share { padding: 7px 24px; border-radius: 22px; border: none; background: rgba(255,255,255,0.92); color: #0a2e6e; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.10); border: 1px solid rgba(255,255,255,0.30); font-family: "楷体","KaiTi",serif; backdrop-filter: blur(4px); min-width: 100px; }
+        .share-row .btn-share:hover { background: rgba(255,255,255,0.98); border-color: rgba(255,255,255,0.60); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(10,46,110,0.20); }
+        .company-area { margin: 0 24px 16px 24px; padding: 0 0 16px 0; border-radius: 20px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.06); overflow: hidden; font-family: "楷体","KaiTi",serif; position: relative; z-index: 2; }
+        .company-logo { width: 100%; display: flex; justify-content: center; align-items: center; padding: 12px 0 8px 0; }
+        .company-logo img { width: 100%; height: auto; max-height: 140px; object-fit: contain; display: block; }
+        .company-desc { font-size: 16px; line-height: 2.0; color: #2c3e6b; text-align: justify; letter-spacing: 0.5px; padding: 0 22px; }
+        .company-desc .first-line { display: block; text-indent: 2em; }
+        .company-website-row { display: flex; align-items: center; justify-content: flex-start; gap: 10px; flex-wrap: wrap; padding: 14px 22px 8px 22px; margin-top: 4px; }
+        .company-website-row .footer-website { font-size: 16px; font-weight: 600; color: #0a2e6e; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; text-decoration: none; }
+        .company-website-row .footer-website:hover { color: #13408a; }
+        .company-website-row .footer-website .arrow { font-size: 20px; color: #0a2e6e; }
+        .company-website-row .footer-copy-tip { font-size: 12px; color: #8a9bb8; cursor: pointer; border-bottom: 1px dashed #c8d2e0; padding-bottom: 1px; }
+        .company-website-row .footer-copy-tip:hover { color: #0a2e6e; }
+        .company-qr-wrap { display: flex; flex-direction: column; align-items: center; padding: 4px 0 10px 0; }
+        .company-qr-box { width: 80px; height: 80px; background: #fff; border-radius: 12px; padding: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #e8ecf2; display: flex; align-items: center; justify-content: center; }
+        .company-qr-box img { width: 100%; height: 100%; object-fit: contain; }
+        .company-qr-label { font-size: 11px; color: #7a8aaa; margin-top: 4px; letter-spacing: 0.5px; }
+        .company-address-phone { display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; color: #2c3e6b; line-height: 1.8; padding: 0 22px; margin-top: 2px; }
+        .company-address-phone .addr { text-align: left; flex-shrink: 1; }
+        .company-address-phone .phone { text-align: right; flex-shrink: 0; margin-left: 16px; }
+        .company-address-phone .label { color: #7a8aaa; font-weight: 400; }
+        .company-post { font-size: 16px; color: #2c3e6b; line-height: 1.8; text-align: left; padding: 0 22px; margin-top: 2px; }
+        .company-post .label { color: #7a8aaa; font-weight: 400; }
+        .toast-tip { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(10,46,110,0.93); color: #fff; padding: 10px 26px; border-radius: 30px; font-size: 14px; font-weight: 500; box-shadow: 0 8px 28px rgba(0,0,0,0.28); z-index: 9999; backdrop-filter: blur(4px); max-width: 90%; text-align: center; transition: opacity 0.25s ease; letter-spacing: 0.3px; border: 1px solid rgba(255,255,255,0.12); font-family: "楷体","KaiTi",serif; }
+        .share-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); z-index: 10000; justify-content: center; align-items: center; padding: 24px; animation: fadeIn 0.3s ease; }
+        .share-modal-overlay.active { display: flex; }
+        .share-modal { background: #fff; border-radius: 28px; max-width: 400px; width: 100%; padding: 28px 24px 24px 24px; box-shadow: 0 24px 56px rgba(0,0,0,0.35); animation: slideUp 0.35s ease; position: relative; }
+        .share-modal-title { font-size: 16px; font-weight: 600; color: #1a2a4a; text-align: center; margin-bottom: 18px; letter-spacing: 0.5px; font-family: "楷体","KaiTi",serif; }
+        .share-modal-close { position: absolute; top: 12px; right: 16px; font-size: 24px; color: #8a9bb8; cursor: pointer; background: none; border: none; line-height: 1; }
+        .share-modal-close:hover { color: #1a2a4a; }
+        .share-card-preview { background: #f5f7fa; border-radius: 18px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 20px; border: 1px solid #e8ecf2; }
+        .share-card-preview .preview-img { width: 100%; aspect-ratio: 16/9; background: #d0d8e4; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .share-card-preview .preview-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .share-card-preview .preview-body { padding: 12px 16px 14px 16px; background: #fff; }
+        .share-card-preview .preview-title { font-size: 16px; font-weight: 600; color: #0a2e6e; margin-bottom: 4px; font-family: "楷体","KaiTi",serif; }
+        .share-card-preview .preview-desc { font-size: 13px; color: #5a6e8a; line-height: 1.5; font-family: "楷体","KaiTi",serif; }
+        .share-card-preview .preview-source { font-size: 11px; color: #8a9bb8; margin-top: 6px; font-family: "楷体","KaiTi",serif; }
+        .share-modal-actions { display: flex; gap: 12px; margin-top: 6px; }
+        .share-modal-actions .sm-btn { flex: 1; padding: 10px 0; border-radius: 22px; border: none; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: "楷体","KaiTi",serif; }
+        .share-modal-actions .sm-btn-primary { background: #0a2e6e; color: #fff; box-shadow: 0 4px 12px rgba(10,46,110,0.25); }
+        .share-modal-actions .sm-btn-primary:hover { background: #13408a; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(10,46,110,0.35); }
+        .share-modal-actions .sm-btn-secondary { background: #eef1f5; color: #1a2a4a; }
+        .share-modal-actions .sm-btn-secondary:hover { background: #e2e7ed; transform: translateY(-1px); }
+        .hidden-share-image { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px) scale(0.96); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
-        body {
-            font-family: "楷体", "KaiTi", serif;
-            background: #e8ecf2;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        /* ===== 主卡片 ===== */
-        .card {
-            max-width: 440px;
-            width: 100%;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-            transition: transform 0.2s ease;
-            background: transparent;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-        }
-
-        /* ===== 背景图区域 ===== */
-        .bg-image {
-            width: 100%;
-            min-height: 85vh;
-            background-image: url('img/index_gb.png');
-            background-size: cover;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 0;
-            padding-bottom: 30px;
-        }
-        .bg-image::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: linear-gradient(to bottom,
-                    transparent 0%,
-                    rgba(161, 184, 206, 0.2) 20%,
-                    rgba(161, 184, 206, 0.5) 50%,
-                    rgba(161, 184, 206, 0.85) 80%,
-                    #A1B8CE 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* ===== 品牌 Logo ===== */
-        .brand-bar {
-            padding: 20px 0 0 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-            flex-shrink: 0;
-            width: 100%;
-        }
-        .brand-icon {
-            width: 100%;
-            max-height: 150px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .brand-icon img {
-            width: 100%;
-            height: auto;
-            max-height: 150px;
-            object-fit: contain;
-            display: block;
-            filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25));
-        }
-
-        /* ===== 个人信息区域 ===== */
-        .info-area {
-            margin: 55vh 24px 0 24px;
-            padding: 22px 26px 18px 26px;
-            border: none;
-            border-radius: 20px;
-            background: #ffffff;
-            text-align: right;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-            font-family: "楷体", "KaiTi", serif;
-            position: relative;
-            z-index: 2;
-            flex-shrink: 0;
-            width: auto;
-            align-self: stretch;
-        }
-        .info-item {
-            margin-bottom: 5px;
-            line-height: 1.4;
-            letter-spacing: 0.5px;
-            color: #000000;
-        }
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-        .info-name {
-            font-size: 38px;
-            font-weight: 700;
-            color: #000000;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .info-title,
-        .info-dept,
-        .info-contact,
-        .info-company,
-        .info-address {
-            font-size: 16px;
-            font-weight: 400;
-            color: #000000;
-        }
-        .info-company {
-            font-weight: 600;
-        }
-
-        /* ===== 底部渐变填充 ===== */
-        .color-fill {
-            width: 100%;
-            background: linear-gradient(to bottom,
-                    #A1B8CE 0%,
-                    #7593AF 25%,
-                    #3b557a 50%,
-                    #3b557a 75%,
-                    #092145 100%);
-            margin-top: -2px;
-            padding-top: 26px;
-            padding-bottom: 20px;
-            box-shadow: inset 0 15px 20px -10px rgba(0, 0, 0, 0.4);
-            position: relative;
-            z-index: 0;
-            border-radius: 0 0 24px 24px;
-        }
-
-        /* ===== 操作按钮 ===== */
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 16px 8px 16px;
-            gap: 10px;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-        }
-        .actions .btn {
-            flex: 1 0 auto;
-            min-width: 52px;
-            padding: 7px 10px;
-            border-radius: 22px;
-            border: none;
-            background: rgba(255, 255, 255, 0.92);
-            color: #0a2e6e;
-            font-size: 12px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.30);
-            white-space: nowrap;
-            font-family: "楷体", "KaiTi", serif;
-            backdrop-filter: blur(4px);
-        }
-        .actions .btn:hover {
-            background: rgba(255, 255, 255, 0.98);
-            border-color: rgba(255, 255, 255, 0.60);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.20);
-        }
-        .actions .btn:active {
-            transform: translateY(0px);
-        }
-        .actions .btn .emoji {
-            font-size: 14px;
-            line-height: 1;
-        }
-        .actions .btn-primary {
-            background: rgba(10, 46, 110, 0.88);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.20);
-            backdrop-filter: blur(4px);
-        }
-        .actions .btn-primary:hover {
-            background: rgba(10, 46, 110, 0.98);
-            border-color: rgba(255, 255, 255, 0.40);
-            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.35);
-        }
-
-        /* ===== 分享按钮行 ===== */
-        .share-row {
-            display: flex;
-            justify-content: center;
-            padding: 2px 16px 16px 16px;
-            position: relative;
-            z-index: 2;
-        }
-        .share-row .btn-share {
-            padding: 7px 24px;
-            border-radius: 22px;
-            border: none;
-            background: rgba(255, 255, 255, 0.92);
-            color: #0a2e6e;
-            font-size: 12px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-            border: 1px solid rgba(255, 255, 255, 0.30);
-            font-family: "楷体", "KaiTi", serif;
-            backdrop-filter: blur(4px);
-            min-width: 100px;
-        }
-        .share-row .btn-share:hover {
-            background: rgba(255, 255, 255, 0.98);
-            border-color: rgba(255, 255, 255, 0.60);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.20);
-        }
-        .share-row .btn-share:active {
-            transform: translateY(0px);
-        }
-        .share-row .btn-share .emoji {
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* ===== 公司介绍区域 ===== */
-        .company-area {
-            margin: 0 24px 16px 24px;
-            padding: 0 0 16px 0;
-            border: none;
-            border-radius: 20px;
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            overflow: hidden;
-            font-family: "楷体", "KaiTi", serif;
-            position: relative;
-            z-index: 2;
-        }
-        .company-logo {
-            width: 100%;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 12px 0 8px 0;
-        }
-        .company-logo img {
-            width: 100%;
-            height: auto;
-            max-height: 140px;
-            object-fit: contain;
-            display: block;
-        }
-        .company-desc {
-            font-size: 16px;
-            line-height: 2.0;
-            color: #2c3e6b;
-            text-align: justify;
-            letter-spacing: 0.5px;
-            word-break: break-word;
-            padding: 0 22px 0 22px;
-        }
-        .company-desc .first-line {
-            display: block;
-            text-indent: 2em;
-        }
-        .company-website-row {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-            flex-wrap: wrap;
-            padding: 14px 22px 8px 22px;
-            margin-top: 4px;
-        }
-        .company-website-row .footer-website {
-            font-size: 16px;
-            font-weight: 600;
-            color: #0a2e6e;
-            cursor: pointer;
-            transition: color 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .company-website-row .footer-website:hover {
-            color: #13408a;
-        }
-        .company-website-row .footer-website .arrow {
-            font-size: 20px;
-            color: #0a2e6e;
-            line-height: 1;
-        }
-        .company-website-row .footer-copy-tip {
-            font-size: 12px;
-            color: #8a9bb8;
-            cursor: pointer;
-            border-bottom: 1px dashed #c8d2e0;
-            padding-bottom: 1px;
-            transition: color 0.2s;
-        }
-        .company-website-row .footer-copy-tip:hover {
-            color: #0a2e6e;
-        }
-        .company-qr-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 4px 0 10px 0;
-        }
-        .company-qr-box {
-            width: 80px;
-            height: 80px;
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 5px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e8ecf2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .company-qr-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-        .company-qr-label {
-            font-size: 11px;
-            color: #7a8aaa;
-            margin-top: 4px;
-            letter-spacing: 0.5px;
-        }
-        .company-address-phone {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-size: 16px;
-            color: #2c3e6b;
-            line-height: 1.8;
-            padding: 0 22px 0 22px;
-            margin-top: 2px;
-        }
-        .company-address-phone .addr {
-            text-align: left;
-            flex-shrink: 1;
-        }
-        .company-address-phone .phone {
-            text-align: right;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-        .company-address-phone .label {
-            color: #7a8aaa;
-            font-weight: 400;
-        }
-        .company-post {
-            font-size: 16px;
-            color: #2c3e6b;
-            line-height: 1.8;
-            text-align: left;
-            padding: 0 22px 0 22px;
-            margin-top: 2px;
-        }
-        .company-post .label {
-            color: #7a8aaa;
-            font-weight: 400;
-        }
-
-        /* ===== Toast 提示 ===== */
-        .toast-tip {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(10, 46, 110, 0.93);
-            color: #fff;
-            padding: 10px 26px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
-            z-index: 9999;
-            backdrop-filter: blur(4px);
-            max-width: 90%;
-            text-align: center;
-            transition: opacity 0.25s ease;
-            letter-spacing: 0.3px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            font-family: "楷体", "KaiTi", serif;
-        }
-
-        /* ===== 分享卡片预览模态框 ===== */
-        .share-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(6px);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            padding: 24px;
-            animation: fadeIn 0.3s ease;
-        }
-        .share-modal-overlay.active {
-            display: flex;
-        }
-        .share-modal {
-            background: #ffffff;
-            border-radius: 28px;
-            max-width: 400px;
-            width: 100%;
-            padding: 28px 24px 24px 24px;
-            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
-            animation: slideUp 0.35s ease;
-            position: relative;
-        }
-        .share-modal-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1a2a4a;
-            text-align: center;
-            margin-bottom: 18px;
-            letter-spacing: 0.5px;
-            font-family: "楷体", "KaiTi", serif;
-        }
-        .share-modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-size: 24px;
-            color: #8a9bb8;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-        .share-modal-close:hover {
-            color: #1a2a4a;
-        }
-
-        /* —— 分享卡片预览（模拟微信卡片，图片在上方放大） —— */
-        .share-card-preview {
-            background: #f5f7fa;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            margin-bottom: 20px;
-            border: 1px solid #e8ecf2;
-        }
-        .share-card-preview .preview-img {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #d0d8e4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .share-card-preview .preview-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .share-card-preview .preview-body {
-            padding: 12px 16px 14px 16px;
-            background: #ffffff;
-        }
-        .share-card-preview .preview-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #0a2e6e;
-            margin-bottom: 4px;
-            font-family: "楷体", "KaiTi", serif;
-        }
-        .share-card-preview .preview-desc {
-            font-size: 13px;
-            color: #5a6e8a;
-            line-height: 1.5;
-            font-family: "楷体", "KaiTi", serif;
-        }
-        .share-card-preview .preview-source {
-            font-size: 11px;
-            color: #8a9bb8;
-            margin-top: 6px;
-            font-family: "楷体", "KaiTi", serif;
-        }
-
-        /* —— 分享操作按钮 —— */
-        .share-modal-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 6px;
-        }
-        .share-modal-actions .sm-btn {
-            flex: 1;
-            padding: 10px 0;
-            border-radius: 22px;
-            border: none;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-family: "楷体", "KaiTi", serif;
-        }
-        .share-modal-actions .sm-btn-primary {
-            background: #0a2e6e;
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(10, 46, 110, 0.25);
-        }
-        .share-modal-actions .sm-btn-primary:hover {
-            background: #13408a;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(10, 46, 110, 0.35);
-        }
-        .share-modal-actions .sm-btn-secondary {
-            background: #eef1f5;
-            color: #1a2a4a;
-        }
-        .share-modal-actions .sm-btn-secondary:hover {
-            background: #e2e7ed;
-            transform: translateY(-1px);
-        }
-        .share-modal-actions .sm-btn .emoji {
-            font-size: 16px;
-            line-height: 1;
-        }
-
-        /* ===== 动画 ===== */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px) scale(0.96);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* ===== 响应式 ===== */
+        /* ===== 响应式（完整） ===== */
         @media (max-width: 480px) {
-            .bg-image {
-                min-height: 80vh;
-                padding-bottom: 20px;
-            }
-            .bg-image::after {
-                height: 100px;
-            }
-            .brand-icon {
-                max-height: 120px;
-            }
-            .brand-icon img {
-                max-height: 120px;
-            }
-            .info-area {
-                margin: 50vh 16px 0 16px;
-                padding: 18px 20px 16px 20px;
-                border-radius: 16px;
-            }
-            .info-name {
-                font-size: 32px;
-            }
-            .info-title,
-            .info-dept,
-            .info-contact,
-            .info-company,
-            .info-address {
-                font-size: 15px;
-            }
-            .color-fill {
-                margin-top: -2px;
-                padding-top: 22px;
-                padding-bottom: 16px;
-            }
-            .company-area {
-                margin: 0 16px 14px 16px;
-                border-radius: 16px;
-            }
-            .company-logo {
-                padding: 10px 0 6px 0;
-            }
-            .company-logo img {
-                max-height: 110px;
-            }
-            .company-desc {
-                font-size: 15px;
-                line-height: 1.9;
-                padding: 0 18px 0 18px;
-            }
-            .company-website-row {
-                padding: 12px 18px 6px 18px;
-            }
-            .company-website-row .footer-website {
-                font-size: 14px;
-            }
-            .company-address-phone {
-                font-size: 14px;
-                padding: 0 18px 0 18px;
-            }
-            .company-post {
-                font-size: 14px;
-                padding: 0 18px 0 18px;
-            }
-            .company-qr-box {
-                width: 68px;
-                height: 68px;
-                padding: 4px;
-            }
-            .company-qr-label {
-                font-size: 10px;
-            }
-            .actions {
-                padding: 0 12px 6px 12px;
-                gap: 8px;
-            }
-            .actions .btn {
-                font-size: 11px;
-                padding: 6px 8px;
-                min-width: 44px;
-            }
-            .actions .btn .emoji {
-                font-size: 13px;
-            }
-            .share-row {
-                padding: 0 12px 12px 12px;
-            }
-            .share-row .btn-share {
-                font-size: 11px;
-                padding: 6px 18px;
-                min-width: 80px;
-            }
-            .share-row .btn-share .emoji {
-                font-size: 13px;
-            }
-            .share-modal {
-                padding: 20px 16px 20px 16px;
-                border-radius: 22px;
-            }
-            .share-modal-title {
-                font-size: 15px;
-            }
-            .share-card-preview .preview-body {
-                padding: 10px 14px 12px 14px;
-            }
-            .share-card-preview .preview-title {
-                font-size: 15px;
-            }
-            .share-card-preview .preview-desc {
-                font-size: 12px;
-            }
-            .share-modal-actions .sm-btn {
-                font-size: 13px;
-                padding: 9px 0;
-            }
-            .share-modal-actions .sm-btn .emoji {
-                font-size: 15px;
-            }
+            .bg-image { min-height: 80vh; padding-bottom: 20px; }
+            .bg-image::after { height: 100px; }
+            .brand-icon { max-height: 120px; }
+            .brand-icon img { max-height: 120px; }
+            .info-area { margin: 50vh 16px 0 16px; padding: 18px 20px 16px 20px; border-radius: 16px; }
+            .info-name { font-size: 32px; }
+            .info-title, .info-dept, .info-contact, .info-company, .info-address { font-size: 15px; }
+            .color-fill { margin-top: -2px; padding-top: 22px; padding-bottom: 16px; }
+            .company-area { margin: 0 16px 14px 16px; border-radius: 16px; }
+            .company-logo { padding: 10px 0 6px 0; }
+            .company-logo img { max-height: 110px; }
+            .company-desc { font-size: 15px; line-height: 1.9; padding: 0 18px; }
+            .company-website-row { padding: 12px 18px 6px 18px; }
+            .company-website-row .footer-website { font-size: 14px; }
+            .company-address-phone { font-size: 14px; padding: 0 18px; }
+            .company-post { font-size: 14px; padding: 0 18px; }
+            .company-qr-box { width: 68px; height: 68px; padding: 4px; }
+            .company-qr-label { font-size: 10px; }
+            .actions { padding: 0 12px 6px 12px; gap: 8px; }
+            .actions .btn { font-size: 11px; padding: 6px 8px; min-width: 44px; }
+            .actions .btn .emoji { font-size: 13px; }
+            .share-row { padding: 0 12px 12px 12px; }
+            .share-row .btn-share { font-size: 11px; padding: 6px 18px; min-width: 80px; }
+            .share-row .btn-share .emoji { font-size: 13px; }
+            .share-modal { padding: 20px 16px 20px 16px; border-radius: 22px; }
+            .share-modal-title { font-size: 15px; }
+            .share-card-preview .preview-body { padding: 10px 14px 12px 14px; }
+            .share-card-preview .preview-title { font-size: 15px; }
+            .share-card-preview .preview-desc { font-size: 12px; }
+            .share-modal-actions .sm-btn { font-size: 13px; padding: 9px 0; }
+            .share-modal-actions .sm-btn .emoji { font-size: 15px; }
         }
-
         @media (max-width: 380px) {
-            .bg-image {
-                min-height: 75vh;
-                padding-bottom: 16px;
-            }
-            .bg-image::after {
-                height: 80px;
-            }
-            .brand-icon {
-                max-height: 100px;
-            }
-            .brand-icon img {
-                max-height: 100px;
-            }
-            .info-area {
-                margin: 45vh 12px 0 12px;
-                padding: 16px 16px 14px 16px;
-                border-radius: 14px;
-            }
-            .info-name {
-                font-size: 28px;
-            }
-            .info-title,
-            .info-dept,
-            .info-contact,
-            .info-company,
-            .info-address {
-                font-size: 14px;
-            }
-            .color-fill {
-                margin-top: -1px;
-                padding-top: 18px;
-                padding-bottom: 12px;
-            }
-            .company-area {
-                margin: 0 12px 12px 12px;
-                border-radius: 14px;
-            }
-            .company-logo img {
-                max-height: 90px;
-            }
-            .company-desc {
-                font-size: 14px;
-                line-height: 1.8;
-                padding: 0 14px 0 14px;
-            }
-            .company-website-row {
-                padding: 10px 14px 4px 14px;
-            }
-            .company-website-row .footer-website {
-                font-size: 13px;
-            }
-            .company-address-phone {
-                font-size: 13px;
-                padding: 0 14px 0 14px;
-            }
-            .company-post {
-                font-size: 13px;
-                padding: 0 14px 0 14px;
-            }
-            .company-qr-box {
-                width: 60px;
-                height: 60px;
-                padding: 4px;
-            }
-            .actions {
-                gap: 6px;
-            }
-            .actions .btn {
-                font-size: 10px;
-                padding: 5px 6px;
-                min-width: 38px;
-            }
-            .actions .btn .emoji {
-                font-size: 12px;
-            }
-            .share-row .btn-share {
-                font-size: 10px;
-                padding: 5px 14px;
-                min-width: 70px;
-            }
-            .share-row .btn-share .emoji {
-                font-size: 12px;
-            }
-            .share-modal {
-                padding: 16px 12px 16px 12px;
-                border-radius: 18px;
-            }
-            .share-modal-title {
-                font-size: 14px;
-            }
-            .share-card-preview .preview-body {
-                padding: 8px 12px 10px 12px;
-            }
-            .share-card-preview .preview-title {
-                font-size: 14px;
-            }
-            .share-card-preview .preview-desc {
-                font-size: 11px;
-            }
-            .share-modal-actions .sm-btn {
-                font-size: 12px;
-                padding: 8px 0;
-            }
-            .share-modal-actions .sm-btn .emoji {
-                font-size: 14px;
-            }
-        }
-
-        /* ===== 隐藏的图片加载辅助（用于微信爬虫识别） ===== */
-        .hidden-share-image {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
+            .bg-image { min-height: 75vh; padding-bottom: 16px; }
+            .bg-image::after { height: 80px; }
+            .brand-icon { max-height: 100px; }
+            .brand-icon img { max-height: 100px; }
+            .info-area { margin: 45vh 12px 0 12px; padding: 16px 16px 14px 16px; border-radius: 14px; }
+            .info-name { font-size: 28px; }
+            .info-title, .info-dept, .info-contact, .info-company, .info-address { font-size: 14px; }
+            .color-fill { margin-top: -1px; padding-top: 18px; padding-bottom: 12px; }
+            .company-area { margin: 0 12px 12px 12px; border-radius: 14px; }
+            .company-logo img { max-height: 90px; }
+            .company-desc { font-size: 14px; line-height: 1.8; padding: 0 14px; }
+            .company-website-row { padding: 10px 14px 4px 14px; }
+            .company-website-row .footer-website { font-size: 13px; }
+            .company-address-phone { font-size: 13px; padding: 0 14px; }
+            .company-post { font-size: 13px; padding: 0 14px; }
+            .company-qr-box { width: 60px; height: 60px; padding: 4px; }
+            .actions { gap: 6px; }
+            .actions .btn { font-size: 10px; padding: 5px 6px; min-width: 38px; }
+            .actions .btn .emoji { font-size: 12px; }
+            .share-row .btn-share { font-size: 10px; padding: 5px 14px; min-width: 70px; }
+            .share-row .btn-share .emoji { font-size: 12px; }
+            .share-modal { padding: 16px 12px 16px 12px; border-radius: 18px; }
+            .share-modal-title { font-size: 14px; }
+            .share-card-preview .preview-body { padding: 8px 12px 10px 12px; }
+            .share-card-preview .preview-title { font-size: 14px; }
+            .share-card-preview .preview-desc { font-size: 11px; }
+            .share-modal-actions .sm-btn { font-size: 12px; padding: 8px 0; }
+            .share-modal-actions .sm-btn .emoji { font-size: 14px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ===== 隐藏的图片（帮助微信爬虫抓取分享图） ===== -->
     <div class="hidden-share-image">
         <img src="https://sss222255555.github.io/yichun-card/img/123.png" alt="分享预览图" />
     </div>
-
-    <!-- ==================== 主名片 ==================== -->
     <div class="card">
-
-        <!-- 背景图区域 -->
         <div class="bg-image">
-
-            <!-- Logo -->
             <div class="brand-bar">
-                <div class="brand-icon">
-                    <img src="img/logo11.png" alt="宜春国控 Logo" />
-                </div>
+                <div class="brand-icon"><img src="img/logo11.png" alt="Logo" /></div>
             </div>
-
-            <!-- 个人信息 -->
             <div class="info-area" id="infoArea">
                 <div class="info-item info-name">余浩</div>
                 <div class="info-item info-title">综合管理部部长</div>
@@ -881,111 +170,68 @@
                 <div class="info-item info-company">宜春市国有资本控股有限公司</div>
                 <div class="info-item info-address">地址：江西省宜春市袁州区经发大道</div>
             </div>
-
         </div>
-
-        <!-- 底部渐变填充 -->
         <div class="color-fill">
-
-            <!-- 操作按钮 -->
             <div class="actions">
                 <button class="btn btn-primary" id="saveBtn"><span class="emoji">💾</span> 保存至</button>
                 <button class="btn" id="callBtn"><span class="emoji">📞</span> 拨打电话</button>
                 <button class="btn" id="copyBtn"><span class="emoji">📋</span> 复制信息</button>
                 <button class="btn" id="qrBtn"><span class="emoji">📱</span> 二维码</button>
             </div>
-
-            <!-- 分享按钮 -->
             <div class="share-row">
                 <button class="btn-share" id="shareBtn"><span class="emoji">📤</span> 分享</button>
             </div>
-
-            <!-- 公司介绍 -->
             <div class="company-area">
-                <div class="company-logo">
-                    <img src="img/logo11.png" alt="宜春国控 Logo" />
-                </div>
+                <div class="company-logo"><img src="img/logo11.png" alt="宜春国控" /></div>
                 <div class="company-desc">
                     <span class="first-line">宜春市国有资本控股有限公司成立于2020年5月，是市属现代综合服务型国有企业，公司坚持以市场需求为导向，秉承"专注、可信、优质、高效"的服务宗旨，深耕三大业务板块："专业化检验检测服务"，业务涵盖建设工程检测、环境监测等专业技术服务。"全链条勘测设计服务"，业务涵盖工程建设项目咨询、勘察（含地灾及压覆矿产评估）设计、施工图设计审查、测绘地理信息、环境影响评价及环保验收等专业技术服务；"一站式人力资源服务"，业务涵盖就业咨询、招聘配置、人才引进、劳务派遣、劳务外包、职业培训、建筑领域三类人员、特种作业人员教育培训考试、网络技术，档案管理（涉密文件资料、涉密档案数字化加工）、广告制作等人才综合服务。</span>
                 </div>
-
                 <div class="company-website-row">
-                    <span class="footer-website" id="websiteLink">
-                        访问官网 <span class="arrow">›</span>
-                    </span>
+                    <span class="footer-website" id="websiteLink">访问官网 <span class="arrow">›</span></span>
                     <span class="footer-copy-tip" id="copyTip">复制后到浏览器打开</span>
                 </div>
-
                 <div class="company-qr-wrap">
-                    <div class="company-qr-box">
-                        <img src="img/qrcode.png" alt="二维码" />
-                    </div>
+                    <div class="company-qr-box"><img src="img/qrcode.png" alt="二维码" /></div>
                     <div class="company-qr-label">扫码关注我们</div>
                 </div>
-
                 <div class="company-address-phone">
                     <span class="addr"><span class="label">地址：</span>江西省宜春市经济技术开发区经发大道26号</span>
                     <span class="phone"><span class="label">电话：</span>0795-3288195</span>
                 </div>
-
-                <div class="company-post">
-                    <span class="label">邮编：</span>336600
-                </div>
+                <div class="company-post"><span class="label">邮编：</span>336600</div>
             </div>
-
         </div>
-
     </div>
 
-    <!-- ==================== 分享卡片预览模态框 ==================== -->
     <div class="share-modal-overlay" id="shareModalOverlay">
         <div class="share-modal">
-
-            <!-- 关闭按钮 -->
             <button class="share-modal-close" id="shareModalClose">✕</button>
-
-            <!-- 标题 -->
             <div class="share-modal-title">📤 分享名片</div>
-
-            <!-- 卡片预览（图片在上方，放大显示） -->
             <div class="share-card-preview">
-                <div class="preview-img">
-                    <!-- 使用 123.png 作为分享预览图 -->
-                    <img src="img/123.png" alt="分享卡片预览" />
-                </div>
+                <div class="preview-img"><img src="img/123.png" alt="分享预览" /></div>
                 <div class="preview-body">
-                    <div class="preview-title">宜春国控·余浩</div>
+                    <div class="preview-title">宜春国控·余浩 电子名片</div>
                     <div class="preview-desc">向你推荐了余浩的名片</div>
                     <div class="preview-source">来自 宜春市国有资本控股有限公司</div>
                 </div>
             </div>
-
-            <!-- 操作按钮 -->
             <div class="share-modal-actions">
-                <button class="sm-btn sm-btn-secondary" id="modalCopyLinkBtn">
-                    <span class="emoji">📋</span> 复制链接
-                </button>
-                <button class="sm-btn sm-btn-primary" id="modalShareBtn">
-                    <span class="emoji">📤</span> 分享
-                </button>
+                <button class="sm-btn sm-btn-secondary" id="modalCopyLinkBtn"><span class="emoji">📋</span> 复制链接</button>
+                <button class="sm-btn sm-btn-primary" id="modalShareBtn"><span class="emoji">📤</span> 分享</button>
             </div>
-
         </div>
     </div>
 
-    <!-- ==================== JavaScript ==================== -->
     <script>
         (function() {
             'use strict';
-
-            // ---------- 配置 ----------
             var WEBSITE_URL = 'http://www.ycsgkgs.com/ycsgkgs/index.html';
             var PAGE_URL = window.location.href;
-            var SHARE_TITLE = '宜春国控·余浩';
+            var SHARE_TITLE = '宜春国控·余浩 电子名片';
             var SHARE_DESC = '向你推荐了余浩的名片';
             var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/123.png';
 
-            // ---------- DOM 引用 ----------
+            // DOM 引用
             var websiteLink = document.getElementById('websiteLink');
             var copyTip = document.getElementById('copyTip');
             var copyBtn = document.getElementById('copyBtn');
@@ -993,41 +239,26 @@
             var saveBtn = document.getElementById('saveBtn');
             var qrBtn = document.getElementById('qrBtn');
             var shareBtn = document.getElementById('shareBtn');
-
-            // 模态框
             var modalOverlay = document.getElementById('shareModalOverlay');
             var modalClose = document.getElementById('shareModalClose');
             var modalCopyLinkBtn = document.getElementById('modalCopyLinkBtn');
             var modalShareBtn = document.getElementById('modalShareBtn');
 
-            // ---------- Toast ----------
             function showToast(msg) {
                 var existing = document.querySelector('.toast-tip');
                 if (existing) existing.remove();
-
                 var toast = document.createElement('div');
                 toast.className = 'toast-tip';
                 toast.textContent = msg;
                 document.body.appendChild(toast);
-                setTimeout(function() {
-                    toast.style.opacity = '0';
-                    setTimeout(function() { toast.remove(); }, 300);
-                }, 2000);
+                setTimeout(function() { toast.style.opacity = '0'; setTimeout(function() { toast.remove(); }, 300); }, 2000);
             }
 
-            // ---------- 复制文本（兼容） ----------
             function copyText(text, successMsg) {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(text).then(function() {
-                        showToast(successMsg || '✅ 已复制');
-                    }).catch(function() {
-                        fallbackCopy(text, successMsg);
-                    });
-                } else {
-                    fallbackCopy(text, successMsg);
-                }
+                    navigator.clipboard.writeText(text).then(function() { showToast(successMsg || '✅ 已复制'); }).catch(function() { fallbackCopy(text, successMsg); });
+                } else { fallbackCopy(text, successMsg); }
             }
-
             function fallbackCopy(text, successMsg) {
                 var textarea = document.createElement('textarea');
                 textarea.value = text;
@@ -1039,18 +270,12 @@
                 textarea.select();
                 try {
                     var ok = document.execCommand('copy');
-                    if (ok) {
-                        showToast(successMsg || '✅ 已复制');
-                    } else {
-                        showToast('⚠️ 复制失败，请手动复制');
-                    }
-                } catch (e) {
-                    showToast('⚠️ 复制失败，请手动复制');
-                }
+                    if (ok) showToast(successMsg || '✅ 已复制');
+                    else showToast('⚠️ 复制失败，请手动复制');
+                } catch (e) { showToast('⚠️ 复制失败，请手动复制'); }
                 document.body.removeChild(textarea);
             }
 
-            // ---------- 获取联系人信息 ----------
             function getContactInfo() {
                 var name = document.querySelector('.info-name')?.textContent.trim() || '未知';
                 var title = document.querySelector('.info-title')?.textContent.trim() || '';
@@ -1062,200 +287,65 @@
                 return { name, title, dept, phone, email, company, addr };
             }
 
-            // ---------- 复制官网链接 ----------
-            if (websiteLink) {
-                websiteLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    copyText(WEBSITE_URL, '✅ 已复制官网链接');
-                });
-            }
-            if (copyTip) {
-                copyTip.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    copyText(WEBSITE_URL, '✅ 已复制官网链接');
-                });
-            }
-
-            // ---------- 复制全部信息 ----------
-            if (copyBtn) {
-                copyBtn.addEventListener('click', function() {
-                    var info = getContactInfo();
-                    var text =
-                        '姓名：' + info.name +
-                        '\n职务：' + info.title +
-                        '\n职位：' + info.dept +
-                        '\n电话：' + info.phone +
-                        '\n邮箱：' + info.email +
-                        '\n公司：' + info.company +
-                        '\n地址：' + info.addr;
-                    copyText(text, '✅ 全部信息已复制');
-                });
-            }
-
-            // ---------- 拨打电话 ----------
-            if (callBtn) {
-                callBtn.addEventListener('click', function() {
-                    var info = getContactInfo();
-                    var phone = info.phone || '17370565453';
-                    if (confirm('即将拨打：' + phone)) {
-                        window.location.href = 'tel:' + phone;
-                    }
-                });
-            }
-
-            // ---------- 保存至通讯录 (vCard) ----------
-            if (saveBtn) {
-                saveBtn.addEventListener('click', function() {
-                    var info = getContactInfo();
-                    if (navigator.contacts && navigator.contacts.save) {
-                        var contact = {
-                            name: [info.name],
-                            tel: [info.phone],
-                            email: [info.email],
-                            organization: [info.company],
-                            title: [info.title],
-                            address: [{ street: info.addr }]
-                        };
-                        navigator.contacts.save(contact)
-                            .then(function() { showToast('✅ 已保存到通讯录'); })
-                            .catch(function() { downloadVCard(info); });
-                    } else {
-                        downloadVCard(info);
-                    }
-                });
-
-                function downloadVCard(info) {
-                    var vcard = [
-                        'BEGIN:VCARD',
-                        'VERSION:3.0',
-                        'FN:' + info.name,
-                        'N:' + info.name + ';;;',
-                        'ORG:' + info.company,
-                        'TITLE:' + info.title + ' (' + info.dept + ')',
-                        'TEL;TYPE=CELL:' + info.phone,
-                        'EMAIL:' + info.email,
-                        'ADR;TYPE=WORK:;;' + info.addr,
-                        'END:VCARD'
-                    ].join('\r\n');
-                    try {
-                        var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-                        var url = URL.createObjectURL(blob);
-                        var link = document.createElement('a');
-                        link.href = url;
-                        link.download = info.name + '.vcf';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        URL.revokeObjectURL(url);
-                        showToast('✅ 通讯录文件已下载');
-                    } catch (e) {
-                        var text = '姓名：' + info.name + '\n电话：' + info.phone + '\n邮箱：' + info.email + '\n公司：' + info
-                            .company;
-                        copyText(text, '⚠️ 已复制联系人信息，请手动保存');
-                    }
-                }
-            }
-
-            // ---------- 二维码按钮 ----------
-            if (qrBtn) {
-                qrBtn.addEventListener('click', function() {
-                    showToast('📱 扫码关注宜春国控');
-                });
-            }
-
-            // ============================================================
-            //  ★★★ 分享功能 —— 带卡片预览模态框 ★★★
-            // ============================================================
-
-            // ---------- 打开模态框 ----------
-            function openShareModal() {
-                modalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-
-            // ---------- 关闭模态框 ----------
-            function closeShareModal() {
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            // 点击遮罩关闭
-            if (modalOverlay) {
-                modalOverlay.addEventListener('click', function(e) {
-                    if (e.target === modalOverlay) {
-                        closeShareModal();
-                    }
-                });
-            }
-            if (modalClose) {
-                modalClose.addEventListener('click', closeShareModal);
-            }
-
-            // ---------- 模态框：复制链接 ----------
-            if (modalCopyLinkBtn) {
-                modalCopyLinkBtn.addEventListener('click', function() {
-                    copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享');
-                    closeShareModal();
-                });
-            }
-
-            // ---------- 模态框：分享（优先 Web Share API） ----------
-            if (modalShareBtn) {
-                modalShareBtn.addEventListener('click', function() {
-                    // 先关闭模态框
-                    closeShareModal();
-
-                    if (navigator.share) {
-                        navigator.share({
-                            title: SHARE_TITLE,
-                            text: SHARE_DESC,
-                            url: PAGE_URL,
-                        }).catch(function(err) {
-                            if (err.name !== 'AbortError') {
-                                copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享');
-                            }
-                        });
-                    } else {
-                        copyText(PAGE_URL, '✅ 链接已复制，可粘贴到微信或浏览器');
-                    }
-                });
-            }
-
-            // ---------- 主分享按钮 ----------
-            if (shareBtn) {
-                shareBtn.addEventListener('click', function() {
-                    if (navigator.share) {
-                        navigator.share({
-                            title: SHARE_TITLE,
-                            text: SHARE_DESC,
-                            url: PAGE_URL,
-                        }).catch(function(err) {
-                            if (err.name !== 'AbortError') {
-                                openShareModal();
-                            }
-                        });
-                    } else {
-                        openShareModal();
-                    }
-                });
-            }
-
-            // ---------- ESC 关闭模态框 ----------
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeShareModal();
-                }
+            if (websiteLink) websiteLink.addEventListener('click', function(e) { e.preventDefault(); copyText(WEBSITE_URL, '✅ 已复制官网链接'); });
+            if (copyTip) copyTip.addEventListener('click', function(e) { e.preventDefault(); copyText(WEBSITE_URL, '✅ 已复制官网链接'); });
+            if (copyBtn) copyBtn.addEventListener('click', function() {
+                var info = getContactInfo();
+                var text = '姓名：' + info.name + '\n职务：' + info.title + '\n职位：' + info.dept + '\n电话：' + info.phone + '\n邮箱：' + info.email + '\n公司：' + info.company + '\n地址：' + info.addr;
+                copyText(text, '✅ 全部信息已复制');
             });
+            if (callBtn) callBtn.addEventListener('click', function() {
+                var phone = getContactInfo().phone || '17370565453';
+                if (confirm('即将拨打：' + phone)) window.location.href = 'tel:' + phone;
+            });
+            if (saveBtn) saveBtn.addEventListener('click', function() {
+                var info = getContactInfo();
+                if (navigator.contacts && navigator.contacts.save) {
+                    navigator.contacts.save({ name: [info.name], tel: [info.phone], email: [info.email], organization: [info.company], title: [info.title], address: [{ street: info.addr }] })
+                        .then(function() { showToast('✅ 已保存到通讯录'); })
+                        .catch(function() { downloadVCard(info); });
+                } else { downloadVCard(info); }
+            });
+            function downloadVCard(info) {
+                var vcard = ['BEGIN:VCARD','VERSION:3.0','FN:'+info.name,'N:'+info.name+';;;','ORG:'+info.company,'TITLE:'+info.title+' ('+info.dept+')','TEL;TYPE=CELL:'+info.phone,'EMAIL:'+info.email,'ADR;TYPE=WORK:;;'+info.addr,'END:VCARD'].join('\r\n');
+                try {
+                    var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+                    var url = URL.createObjectURL(blob);
+                    var link = document.createElement('a');
+                    link.href = url;
+                    link.download = info.name + '.vcf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                    showToast('✅ 通讯录文件已下载');
+                } catch (e) {
+                    copyText('姓名：'+info.name+'\n电话：'+info.phone+'\n邮箱：'+info.email+'\n公司：'+info.company, '⚠️ 已复制联系人信息，请手动保存');
+                }
+            }
+            if (qrBtn) qrBtn.addEventListener('click', function() { showToast('📱 扫码关注宜春国控'); });
 
-            // ---------- 微信分享辅助：页面加载完成后预加载分享图片 ----------
+            function openShareModal() { modalOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            function closeShareModal() { modalOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+            if (modalOverlay) modalOverlay.addEventListener('click', function(e) { if (e.target === modalOverlay) closeShareModal(); });
+            if (modalClose) modalClose.addEventListener('click', closeShareModal);
+            if (modalCopyLinkBtn) modalCopyLinkBtn.addEventListener('click', function() { copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享'); closeShareModal(); });
+            if (modalShareBtn) modalShareBtn.addEventListener('click', function() {
+                closeShareModal();
+                if (navigator.share) {
+                    navigator.share({ title: SHARE_TITLE, text: SHARE_DESC, url: PAGE_URL }).catch(function(err) { if (err.name !== 'AbortError') copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享'); });
+                } else { copyText(PAGE_URL, '✅ 链接已复制，可粘贴到微信或浏览器'); }
+            });
+            if (shareBtn) shareBtn.addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({ title: SHARE_TITLE, text: SHARE_DESC, url: PAGE_URL }).catch(function(err) { if (err.name !== 'AbortError') openShareModal(); });
+                } else { openShareModal(); }
+            });
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeShareModal(); });
             var preloadImg = new Image();
             preloadImg.src = SHARE_IMG;
-
-            console.log('✅ 分享内容已更新：标题="宜春国控·余浩"，描述="向你推荐了余浩的名片"');
-            console.log('📤 分享图片地址：', SHARE_IMG);
-
+            console.log('✅ 分享内容已更新：标题="宜春国控·余浩 电子名片"，描述="向你推荐了余浩的名片"');
         })();
     </script>
-
 </body>
 </html>
