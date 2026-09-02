@@ -6,14 +6,19 @@
     <title>宜春国控 · 余浩 电子名片</title>
 
     <!-- ===== Open Graph 标签（微信/社交分享卡片） ===== -->
-    <meta property="og:title" content="宜春国控" />
-    <meta property="og:description" content="向你推荐余浩的名片 · 综合管理部部长" />
-    <!-- 分享图片改为 123.png（请放置于 img/ 目录下，建议尺寸 1200x630 以上） -->
+    <meta property="og:title" content="宜春国控 · 余浩 电子名片" />
+    <meta property="og:description" content="向你推荐余浩的名片 · 综合管理部部长 · 宜春市国有资本控股有限公司" />
+    <!-- 分享图片：使用 123.png，建议尺寸 1200x630，需确保文件存在且可访问 -->
     <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/123.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://sss222255555.github.io/yichun-card/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="宜春国控" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- ===== 微信分享卡片备用图片（隐藏的 img 标签，帮助微信爬虫识别） ===== -->
+    <link rel="image_src" href="https://sss222255555.github.io/yichun-card/img/123.png" />
 
     <style>
         /* ===== 基础重置 ===== */
@@ -832,9 +837,26 @@
                 font-size: 14px;
             }
         }
+
+        /* ===== 隐藏的图片加载辅助（用于微信爬虫识别） ===== */
+        .hidden-share-image {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
     </style>
 </head>
 <body>
+
+    <!-- ===== 隐藏的图片（帮助微信爬虫抓取分享图） ===== -->
+    <div class="hidden-share-image">
+        <img src="https://sss222255555.github.io/yichun-card/img/123.png" alt="分享预览图" />
+    </div>
 
     <!-- ==================== 主名片 ==================== -->
     <div class="card">
@@ -959,8 +981,8 @@
             // ---------- 配置 ----------
             var WEBSITE_URL = 'http://www.ycsgkgs.com/ycsgkgs/index.html';
             var PAGE_URL = window.location.href;
-            var SHARE_TITLE = '宜春国控';
-            var SHARE_DESC = '向你推荐余浩的名片 · 综合管理部部长';
+            var SHARE_TITLE = '宜春国控 · 余浩 电子名片';
+            var SHARE_DESC = '向你推荐余浩的名片 · 综合管理部部长 · 宜春市国有资本控股有限公司';
             var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/123.png';
 
             // ---------- DOM 引用 ----------
@@ -1225,7 +1247,13 @@
                 }
             });
 
+            // ---------- 微信分享辅助：页面加载完成后预加载分享图片 ----------
+            // 这可以帮助微信爬虫在分享时更快地获取图片
+            var preloadImg = new Image();
+            preloadImg.src = SHARE_IMG;
+
             console.log('✅ 分享功能已加载（图片已切换为 123.png）');
+            console.log('📤 分享图片地址：', SHARE_IMG);
 
         })();
     </script>
