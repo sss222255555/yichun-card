@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>电子名片</title>
+    <title>宜春国控 · 余浩 电子名片</title>
+    
+    <!-- ===== Open Graph 标签（分享卡片预览） ===== -->
+    <meta property="og:title" content="宜春国控 · 余浩 电子名片" />
+    <meta property="og:description" content="宜春市国有资本控股有限公司 综合管理部部长 余浩 电话：17370565453" />
+    <!-- 分享预览图片使用背景图（index_gb.png） -->
+    <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/index_gb.png" />
+    <meta property="og:url" content="https://sss222255555.github.io/yichun-card/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <style>
+        /* ===== 全部样式（与您之前一致） ===== */
         * {
             margin: 0;
             padding: 0;
@@ -814,13 +825,10 @@
                 });
             }
 
-            // ============================================================
-            // ===== 保存至 — 优先 Web Contacts API，降级为 vCard 下载 =====
-            // ============================================================
+            // ===== 保存至 (vCard) =====
             var saveBtn = document.getElementById('saveBtn');
             if (saveBtn) {
                 saveBtn.addEventListener('click', function() {
-                    // 提取联系人信息
                     var name = document.querySelector('.info-name')?.textContent.trim() || '未知';
                     var title = document.querySelector('.info-title')?.textContent.trim() || '';
                     var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
@@ -829,7 +837,6 @@
                     var company = document.querySelector('.info-company')?.textContent.trim() || '';
                     var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
 
-                    // ----- 方案1: Web Contacts API (Android Chrome 等支持) -----
                     if (navigator.contacts && navigator.contacts.save) {
                         var contact = {
                             name: [name],
@@ -837,46 +844,24 @@
                             email: [email],
                             organization: [company],
                             title: [title],
-                            address: [{
-                                street: addr,
-                                city: '',
-                                region: '',
-                                postalCode: '',
-                                country: ''
-                            }]
+                            address: [{ street: addr }]
                         };
-
                         navigator.contacts.save(contact)
-                            .then(function() {
-                                showToast('✅ 已保存到通讯录');
-                            })
-                            .catch(function(err) {
-                                // 用户拒绝或API失败，降级到vCard
-                                console.warn('Contacts API 失败，降级到 vCard', err);
-                                downloadVCard(name, title, dept, phone, email, company, addr);
-                            });
-                        return;
+                            .then(() => showToast('✅ 已保存到通讯录'))
+                            .catch(() => downloadVCard(name, title, dept, phone, email, company, addr));
+                    } else {
+                        downloadVCard(name, title, dept, phone, email, company, addr);
                     }
-
-                    // ----- 方案2: vCard 下载 (通用方案) -----
-                    downloadVCard(name, title, dept, phone, email, company, addr);
                 });
 
                 function downloadVCard(name, title, dept, phone, email, company, addr) {
-                    // 构建 vCard 3.0 格式
                     var vcard = [
-                        'BEGIN:VCARD',
-                        'VERSION:3.0',
-                        'FN:' + name,
-                        'N:' + name + ';;;',
-                        'ORG:' + company,
+                        'BEGIN:VCARD', 'VERSION:3.0', 'FN:' + name,
+                        'N:' + name + ';;;', 'ORG:' + company,
                         'TITLE:' + title + ' (' + dept + ')',
-                        'TEL;TYPE=CELL:' + phone,
-                        'EMAIL:' + email,
-                        'ADR;TYPE=WORK:;;' + addr,
-                        'END:VCARD'
+                        'TEL;TYPE=CELL:' + phone, 'EMAIL:' + email,
+                        'ADR;TYPE=WORK:;;' + addr, 'END:VCARD'
                     ].join('\r\n');
-
                     try {
                         var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
                         var url = URL.createObjectURL(blob);
@@ -887,19 +872,11 @@
                         link.click();
                         document.body.removeChild(link);
                         URL.revokeObjectURL(url);
-                        showToast('✅ 通讯录文件已下载，点击即可导入');
+                        showToast('✅ 通讯录文件已下载');
                     } catch (e) {
-                        // 降级：使用 data URI
-                        try {
-                            var encoded = encodeURIComponent(vcard);
-                            window.location.href = 'data:text/vcard;charset=utf-8,' + encoded;
-                            showToast('✅ 通讯录文件已下载');
-                        } catch (e2) {
-                            // 最终降级：复制文本
-                            var text = '姓名：' + name + '\n电话：' + phone + '\n邮箱：' + email + '\n公司：' + company;
-                            fallbackCopy(text);
-                            showToast('⚠️ 已复制联系人信息，请手动保存');
-                        }
+                        var text = '姓名：' + name + '\n电话：' + phone + '\n邮箱：' + email + '\n公司：' + company;
+                        fallbackCopy(text);
+                        showToast('⚠️ 已复制联系人信息，请手动保存');
                     }
                 }
             }
@@ -912,7 +889,7 @@
                 });
             }
 
-            // ===== 分享功能 =====
+            // ===== 分享功能（优先原生分享） =====
             var shareBtn = document.getElementById('shareBtn');
             if (shareBtn) {
                 shareBtn.addEventListener('click', function() {
@@ -921,17 +898,9 @@
                     var text = '宜春市国有资本控股有限公司 综合管理部部长 余浩\n电话：17370565453\n邮箱：17370565453@163.com';
 
                     if (navigator.share) {
-                        navigator.share({
-                            title: title,
-                            text: text,
-                            url: url
-                        }).then(function() {
-                            // 成功
-                        }).catch(function(err) {
-                            if (err.name !== 'AbortError') {
-                                showToast('⚠️ 分享失败，请重试');
-                            }
-                        });
+                        navigator.share({ title: title, text: text, url: url })
+                            .then(() => {})
+                            .catch(err => { if (err.name !== 'AbortError') showToast('⚠️ 分享失败，请重试'); });
                     } else {
                         fallbackCopy(url);
                         showToast('✅ 链接已复制，可粘贴到微信或浏览器');
@@ -941,6 +910,5 @@
 
         })();
     </script>
-
 </body>
 </html>
