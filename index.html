@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>宜春国控 · 余浩 电子名片</title>
 
-    <!-- ===== Open Graph 标签（分享卡片预览） ===== -->
+    <!-- ===== Open Graph 标签（微信/社交分享卡片） ===== -->
     <meta property="og:title" content="宜春国控" />
-    <meta property="og:description" content="向你推荐余浩的名片" />
-    <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/index_gb.png" />
+    <meta property="og:description" content="向你推荐余浩的名片 · 综合管理部部长" />
+    <!-- 分享图片改为 123.png（请放置于 img/ 目录下，建议尺寸 1200x630 以上） -->
+    <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/123.png" />
     <meta property="og:url" content="https://sss222255555.github.io/yichun-card/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="宜春国控" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <style>
+        /* ===== 基础重置 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -489,7 +492,7 @@
             color: #1a2a4a;
         }
 
-        /* —— 分享卡片预览 —— */
+        /* —— 分享卡片预览（模拟微信卡片，图片在上方放大） —— */
         .share-card-preview {
             background: #f5f7fa;
             border-radius: 18px;
@@ -870,7 +873,7 @@
                 <button class="btn" id="qrBtn"><span class="emoji">📱</span> 二维码</button>
             </div>
 
-            <!-- 分享按钮（触发模态框） -->
+            <!-- 分享按钮 -->
             <div class="share-row">
                 <button class="btn-share" id="shareBtn"><span class="emoji">📤</span> 分享</button>
             </div>
@@ -922,10 +925,11 @@
             <!-- 标题 -->
             <div class="share-modal-title">📤 分享名片</div>
 
-            <!-- 卡片预览 -->
+            <!-- 卡片预览（图片在上方，放大显示） -->
             <div class="share-card-preview">
                 <div class="preview-img">
-                    <img src="img/index_gb.png" alt="分享卡片预览" />
+                    <!-- 使用 123.png 作为分享预览图 -->
+                    <img src="img/123.png" alt="分享卡片预览" />
                 </div>
                 <div class="preview-body">
                     <div class="preview-title">宜春国控</div>
@@ -957,7 +961,7 @@
             var PAGE_URL = window.location.href;
             var SHARE_TITLE = '宜春国控';
             var SHARE_DESC = '向你推荐余浩的名片 · 综合管理部部长';
-            var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/index_gb.png';
+            var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/123.png';
 
             // ---------- DOM 引用 ----------
             var websiteLink = document.getElementById('websiteLink');
@@ -1179,7 +1183,6 @@
                     // 先关闭模态框
                     closeShareModal();
 
-                    // 检测是否支持 Web Share API
                     if (navigator.share) {
                         navigator.share({
                             title: SHARE_TITLE,
@@ -1187,12 +1190,10 @@
                             url: PAGE_URL,
                         }).catch(function(err) {
                             if (err.name !== 'AbortError') {
-                                // 如果分享失败，降级为复制链接
                                 copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享');
                             }
                         });
                     } else {
-                        // 不支持原生分享 → 复制链接
                         copyText(PAGE_URL, '✅ 链接已复制，可粘贴到微信或浏览器');
                     }
                 });
@@ -1201,21 +1202,17 @@
             // ---------- 主分享按钮 ----------
             if (shareBtn) {
                 shareBtn.addEventListener('click', function() {
-                    // 检测是否支持 Web Share API
                     if (navigator.share) {
-                        // 支持原生分享：直接调用，不弹模态框（更流畅）
                         navigator.share({
                             title: SHARE_TITLE,
                             text: SHARE_DESC,
                             url: PAGE_URL,
                         }).catch(function(err) {
                             if (err.name !== 'AbortError') {
-                                // 分享失败，降级为模态框
                                 openShareModal();
                             }
                         });
                     } else {
-                        // 不支持原生分享 → 打开模态框，让用户选择复制链接或分享
                         openShareModal();
                     }
                 });
@@ -1228,7 +1225,7 @@
                 }
             });
 
-            console.log('✅ 分享功能已加载（含卡片预览模态框）');
+            console.log('✅ 分享功能已加载（图片已切换为 123.png）');
 
         })();
     </script>
