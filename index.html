@@ -5,67 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>宜春国控 · 余浩 电子名片</title>
 
-    <!-- ===== Open Graph 标签（微信/社交分享卡片） ===== -->
     <meta property="og:title" content="宜春国控·余浩 电子名片" />
     <meta property="og:description" content="向你推荐了余浩的名片" />
-    <meta property="og:image" content="https://sss222255555.github.io/yichun-card/img/share-big.png" />
-    <!-- 显式声明图片宽高，帮助微信识别为大图 -->
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://sss222255555.github.io/yichun-card/" />
+    <meta property="og:image" content="https://sss222255555.github.io/card/img/share-big.png" />
+    <meta property="og:url" content="https://sss222255555.github.io/card/" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="宜春国控" />
     <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- ===== 微信分享卡片备用图片 ===== -->
-    <link rel="image_src" href="https://sss222255555.github.io/yichun-card/img/share-big.png" />
+    <link rel="image_src" href="https://sss222255555.github.io/card/img/share-big.png" />
 
     <style>
-        /* ===== 基础重置 ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: "楷体","KaiTi",serif; background: #e8ecf2; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
         .card { max-width: 440px; width: 100%; border-radius: 24px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.12); background: transparent; }
-        .bg-image { width: 100%; min-height: 85vh; background-image: url('img/index_gb.png'); background-size: cover; background-position: center 30%; background-repeat: no-repeat; position: relative; display: flex; flex-direction: column; align-items: center; z-index: 0; padding-bottom: 30px; }
-        .bg-image::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 120px; background: linear-gradient(to bottom, transparent 0%, rgba(161,184,206,0.2) 20%, rgba(161,184,206,0.5) 50%, rgba(161,184,206,0.85) 80%, #A1B8CE 100%); pointer-events: none; z-index: 1; }
+        
+        .bg-image { width: 100%; min-height: 85vh; background-image: url('img/index_gb.png'); background-size: cover; background-position: center 30%; background-repeat: no-repeat; position: relative; display: flex; flex-direction: column; align-items: center; z-index: 0; padding-bottom: 10px; }
+        .bg-image::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 120px; background: linear-gradient(to bottom, transparent 0%, rgba(161,184,206,0.2) 20%, rgba(161,184,206,0.5) 50%, rgba(161,184,206,0.85) 80%, #A1B8CE 100%); pointer-events: none; z-index: 1; }
+        
         .brand-bar { padding: 20px 0 0 0; display: flex; justify-content: center; align-items: center; position: relative; z-index: 2; width: 100%; }
         .brand-icon { width: 100%; max-height: 150px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .brand-icon img { width: 100%; height: auto; max-height: 150px; object-fit: contain; display: block; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.25)); }
+        
         .info-area { margin: 55vh 24px 0 24px; padding: 22px 26px 18px 26px; border-radius: 20px; background: #fff; text-align: right; box-shadow: 0 4px 16px rgba(0,0,0,0.12); font-family: "楷体","KaiTi",serif; position: relative; z-index: 2; align-self: stretch; }
         .info-item { margin-bottom: 5px; line-height: 1.4; letter-spacing: 0.5px; color: #000; }
         .info-name { font-size: 38px; font-weight: 700; color: #000; letter-spacing: 2px; margin-bottom: 10px; }
         .info-title, .info-dept, .info-contact, .info-company, .info-address { font-size: 16px; font-weight: 400; color: #000; }
         .info-company { font-weight: 600; }
-        .color-fill { width: 100%; background: linear-gradient(to bottom, #A1B8CE 0%, #7593AF 25%, #3b557a 50%, #3b557a 75%, #092145 100%); margin-top: -2px; padding-top: 26px; padding-bottom: 20px; box-shadow: inset 0 15px 20px -10px rgba(0,0,0,0.4); border-radius: 0 0 24px 24px; }
-        .actions { display: flex; flex-wrap: wrap; padding: 0 16px 8px 16px; gap: 10px; justify-content: center; position: relative; z-index: 2; }
-        .actions .btn { flex: 1 0 auto; min-width: 52px; padding: 7px 10px; border-radius: 22px; border: none; background: rgba(255,255,255,0.92); color: #0a2e6e; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.10); border: 1px solid rgba(255,255,255,0.30); white-space: nowrap; font-family: "楷体","KaiTi",serif; backdrop-filter: blur(4px); }
+        
+        .color-fill { width: 100%; background: linear-gradient(to bottom, #A1B8CE 0%, #7593AF 25%, #3b557a 50%, #3b557a 75%, #092145 100%); margin-top: 0; padding-top: 15px; padding-bottom: 20px; border-radius: 0 0 24px 24px; }
+        
+        .actions { display: flex; gap: 10px; justify-content: center; position: relative; z-index: 2; padding: 0 16px 12px 16px; }
+        .actions .btn { flex: 1; padding: 10px 0; border-radius: 22px; border: none; background: rgba(255,255,255,0.92); color: #0a2e6e; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.10); border: 1px solid rgba(255,255,255,0.30); white-space: nowrap; font-family: "楷体","KaiTi",serif; backdrop-filter: blur(4px); }
         .actions .btn:hover { background: rgba(255,255,255,0.98); border-color: rgba(255,255,255,0.60); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(10,46,110,0.20); }
-        .actions .btn-primary { background: rgba(10,46,110,0.88); color: #fff; border-color: rgba(255,255,255,0.20); }
-        .actions .btn-primary:hover { background: rgba(10,46,110,0.98); border-color: rgba(255,255,255,0.40); box-shadow: 0 6px 18px rgba(10,46,110,0.35); }
-        .share-row { display: flex; justify-content: center; padding: 2px 16px 16px 16px; position: relative; z-index: 2; }
-        .share-row .btn-share { padding: 7px 24px; border-radius: 22px; border: none; background: rgba(255,255,255,0.92); color: #0a2e6e; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 4px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.10); border: 1px solid rgba(255,255,255,0.30); font-family: "楷体","KaiTi",serif; backdrop-filter: blur(4px); min-width: 100px; }
-        .share-row .btn-share:hover { background: rgba(255,255,255,0.98); border-color: rgba(255,255,255,0.60); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(10,46,110,0.20); }
+        .actions .btn .emoji { font-size: 15px; }
+        
         .company-area { margin: 0 24px 16px 24px; padding: 0 0 16px 0; border-radius: 20px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.06); overflow: hidden; font-family: "楷体","KaiTi",serif; position: relative; z-index: 2; }
         .company-logo { width: 100%; display: flex; justify-content: center; align-items: center; padding: 12px 0 8px 0; }
         .company-logo img { width: 100%; height: auto; max-height: 140px; object-fit: contain; display: block; }
         .company-desc { font-size: 16px; line-height: 2.0; color: #2c3e6b; text-align: justify; letter-spacing: 0.5px; padding: 0 22px; }
         .company-desc .first-line { display: block; text-indent: 2em; }
+        
         .company-website-row { display: flex; align-items: center; justify-content: flex-start; gap: 10px; flex-wrap: wrap; padding: 14px 22px 8px 22px; margin-top: 4px; }
         .company-website-row .footer-website { font-size: 16px; font-weight: 600; color: #0a2e6e; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; text-decoration: none; }
         .company-website-row .footer-website:hover { color: #13408a; }
-        .company-website-row .footer-website .arrow { font-size: 20px; color: #0a2e6e; }
         .company-website-row .footer-copy-tip { font-size: 12px; color: #8a9bb8; cursor: pointer; border-bottom: 1px dashed #c8d2e0; padding-bottom: 1px; }
         .company-website-row .footer-copy-tip:hover { color: #0a2e6e; }
+        .company-website-row .arrow { font-size: 20px; color: #0a2e6e; cursor: pointer; margin-left: auto; }
+        
         .company-qr-wrap { display: flex; flex-direction: column; align-items: center; padding: 4px 0 10px 0; }
         .company-qr-box { width: 80px; height: 80px; background: #fff; border-radius: 12px; padding: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #e8ecf2; display: flex; align-items: center; justify-content: center; }
         .company-qr-box img { width: 100%; height: 100%; object-fit: contain; }
         .company-qr-label { font-size: 11px; color: #7a8aaa; margin-top: 4px; letter-spacing: 0.5px; }
-        .company-address-phone { display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; color: #2c3e6b; line-height: 1.8; padding: 0 22px; margin-top: 2px; }
-        .company-address-phone .addr { text-align: left; flex-shrink: 1; }
-        .company-address-phone .phone { text-align: right; flex-shrink: 0; margin-left: 16px; }
-        .company-address-phone .label { color: #7a8aaa; font-weight: 400; }
-        .company-post { font-size: 16px; color: #2c3e6b; line-height: 1.8; text-align: left; padding: 0 22px; margin-top: 2px; }
-        .company-post .label { color: #7a8aaa; font-weight: 400; }
+        
+        .company-address-row { font-size: 16px; color: #2c3e6b; line-height: 1.8; text-align: left; padding: 0 22px; margin-top: 2px; }
+        .company-address-row .label { color: #7a8aaa; font-weight: 400; }
+        .company-contact-row { display: flex; align-items: baseline; font-size: 16px; color: #2c3e6b; line-height: 1.8; padding: 0 22px; margin-top: 2px; }
+        .company-contact-row .contact-col { flex: 1; text-align: left; }
+        .company-contact-row .contact-col .label { color: #7a8aaa; font-weight: 400; }
+        
         .toast-tip { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(10,46,110,0.93); color: #fff; padding: 10px 26px; border-radius: 30px; font-size: 14px; font-weight: 500; box-shadow: 0 8px 28px rgba(0,0,0,0.28); z-index: 9999; backdrop-filter: blur(4px); max-width: 90%; text-align: center; transition: opacity 0.25s ease; letter-spacing: 0.3px; border: 1px solid rgba(255,255,255,0.12); font-family: "楷体","KaiTi",serif; }
+        
         .share-modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); z-index: 10000; justify-content: center; align-items: center; padding: 24px; animation: fadeIn 0.3s ease; }
         .share-modal-overlay.active { display: flex; }
         .share-modal { background: #fff; border-radius: 28px; max-width: 400px; width: 100%; padding: 28px 24px 24px 24px; box-shadow: 0 24px 56px rgba(0,0,0,0.35); animation: slideUp 0.35s ease; position: relative; }
@@ -85,80 +83,72 @@
         .share-modal-actions .sm-btn-primary:hover { background: #13408a; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(10,46,110,0.35); }
         .share-modal-actions .sm-btn-secondary { background: #eef1f5; color: #1a2a4a; }
         .share-modal-actions .sm-btn-secondary:hover { background: #e2e7ed; transform: translateY(-1px); }
+        
         .hidden-share-image { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px) scale(0.96); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+        
+        #qrModalOverlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); z-index: 10000; justify-content: center; align-items: center; padding: 24px; }
+        #qrModalOverlay.active { display: flex; }
+        #qrModalOverlay .share-modal { text-align: center; }
+        #qrcode { display: flex; justify-content: center; margin: 20px 0; }
+        #qrcode img { display: block; width: 240px; height: 240px; margin: 0 auto; -webkit-touch-callout: default; pointer-events: auto; }
+        .qr-tip { font-size: 12px; color: #888; margin-top: -10px; margin-bottom: 10px; }
 
-        /* ===== 响应式 ===== */
         @media (max-width: 480px) {
-            .bg-image { min-height: 80vh; padding-bottom: 20px; }
+            .bg-image { min-height: 80vh; padding-bottom: 8px; }
             .bg-image::after { height: 100px; }
             .brand-icon { max-height: 120px; }
             .brand-icon img { max-height: 120px; }
             .info-area { margin: 50vh 16px 0 16px; padding: 18px 20px 16px 20px; border-radius: 16px; }
             .info-name { font-size: 32px; }
             .info-title, .info-dept, .info-contact, .info-company, .info-address { font-size: 15px; }
-            .color-fill { margin-top: -2px; padding-top: 22px; padding-bottom: 16px; }
+            .color-fill { margin-top: 0; padding-top: 10px; padding-bottom: 16px; }
             .company-area { margin: 0 16px 14px 16px; border-radius: 16px; }
             .company-logo { padding: 10px 0 6px 0; }
             .company-logo img { max-height: 110px; }
             .company-desc { font-size: 15px; line-height: 1.9; padding: 0 18px; }
             .company-website-row { padding: 12px 18px 6px 18px; }
             .company-website-row .footer-website { font-size: 14px; }
-            .company-address-phone { font-size: 14px; padding: 0 18px; }
-            .company-post { font-size: 14px; padding: 0 18px; }
+            .company-address-row { font-size: 14px; padding: 0 18px; }
+            .company-contact-row { font-size: 14px; padding: 0 18px; }
             .company-qr-box { width: 68px; height: 68px; padding: 4px; }
             .company-qr-label { font-size: 10px; }
-            .actions { padding: 0 12px 6px 12px; gap: 8px; }
-            .actions .btn { font-size: 11px; padding: 6px 8px; min-width: 44px; }
-            .actions .btn .emoji { font-size: 13px; }
-            .share-row { padding: 0 12px 12px 12px; }
-            .share-row .btn-share { font-size: 11px; padding: 6px 18px; min-width: 80px; }
-            .share-row .btn-share .emoji { font-size: 13px; }
+            .actions { padding: 0 12px 10px 12px; gap: 8px; }
+            .actions .btn { font-size: 12px; padding: 9px 0; }
             .share-modal { padding: 20px 16px 20px 16px; border-radius: 22px; }
             .share-modal-title { font-size: 15px; }
-            .share-card-preview .preview-body { padding: 10px 14px 12px 14px; }
-            .share-card-preview .preview-title { font-size: 15px; }
-            .share-card-preview .preview-desc { font-size: 12px; }
-            .share-modal-actions .sm-btn { font-size: 13px; padding: 9px 0; }
-            .share-modal-actions .sm-btn .emoji { font-size: 15px; }
         }
         @media (max-width: 380px) {
-            .bg-image { min-height: 75vh; padding-bottom: 16px; }
+            .bg-image { min-height: 75vh; padding-bottom: 6px; }
             .bg-image::after { height: 80px; }
             .brand-icon { max-height: 100px; }
             .brand-icon img { max-height: 100px; }
             .info-area { margin: 45vh 12px 0 12px; padding: 16px 16px 14px 16px; border-radius: 14px; }
             .info-name { font-size: 28px; }
             .info-title, .info-dept, .info-contact, .info-company, .info-address { font-size: 14px; }
-            .color-fill { margin-top: -1px; padding-top: 18px; padding-bottom: 12px; }
+            .color-fill { margin-top: 0; padding-top: 8px; padding-bottom: 12px; }
             .company-area { margin: 0 12px 12px 12px; border-radius: 14px; }
             .company-logo img { max-height: 90px; }
             .company-desc { font-size: 14px; line-height: 1.8; padding: 0 14px; }
             .company-website-row { padding: 10px 14px 4px 14px; }
             .company-website-row .footer-website { font-size: 13px; }
-            .company-address-phone { font-size: 13px; padding: 0 14px; }
-            .company-post { font-size: 13px; padding: 0 14px; }
+            .company-address-row { font-size: 13px; padding: 0 14px; }
+            .company-contact-row { font-size: 13px; padding: 0 14px; }
             .company-qr-box { width: 60px; height: 60px; padding: 4px; }
             .actions { gap: 6px; }
-            .actions .btn { font-size: 10px; padding: 5px 6px; min-width: 38px; }
-            .actions .btn .emoji { font-size: 12px; }
-            .share-row .btn-share { font-size: 10px; padding: 5px 14px; min-width: 70px; }
-            .share-row .btn-share .emoji { font-size: 12px; }
+            .actions .btn { font-size: 11px; padding: 8px 0; }
             .share-modal { padding: 16px 12px 16px 12px; border-radius: 18px; }
             .share-modal-title { font-size: 14px; }
-            .share-card-preview .preview-body { padding: 8px 12px 10px 12px; }
-            .share-card-preview .preview-title { font-size: 14px; }
-            .share-card-preview .preview-desc { font-size: 11px; }
-            .share-modal-actions .sm-btn { font-size: 12px; padding: 8px 0; }
-            .share-modal-actions .sm-btn .emoji { font-size: 14px; }
         }
     </style>
 </head>
 <body>
-    <!-- 隐藏图片帮助微信爬虫 -->
+
+    <a href="index.html" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 20px; font-size: 14px; color: #0a2e6e; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.5);">‹ 返回列表</a>
+
     <div class="hidden-share-image">
-        <img src="https://sss222255555.github.io/yichun-card/img/share-big.png" alt="分享预览图" />
+        <img src="https://sss222255555.github.io/card/img/share-big.png" alt="分享预览图" />
     </div>
 
     <div class="card">
@@ -168,8 +158,8 @@
             </div>
             <div class="info-area" id="infoArea">
                 <div class="info-item info-name">余浩</div>
-                <div class="info-item info-title">综合管理部部长</div>
-                <div class="info-item info-dept">检测设计</div>
+                <div class="info-item info-title">综合管理部</div>
+                <div class="info-item info-dept">部长</div>
                 <div class="info-item info-contact">17370565453</div>
                 <div class="info-item info-contact">17370565453@163.com</div>
                 <div class="info-item info-company">宜春市国有资本控股有限公司</div>
@@ -177,44 +167,52 @@
             </div>
         </div>
         <div class="color-fill">
+            
             <div class="actions">
-                <button class="btn btn-primary" id="saveBtn"><span class="emoji">💾</span> 保存至</button>
                 <button class="btn" id="callBtn"><span class="emoji">📞</span> 拨打电话</button>
                 <button class="btn" id="copyBtn"><span class="emoji">📋</span> 复制信息</button>
+            </div>
+
+            <div class="actions">
                 <button class="btn" id="qrBtn"><span class="emoji">📱</span> 二维码</button>
+                <button class="btn" id="shareBtn"><span class="emoji">📤</span> 分享</button>
             </div>
-            <div class="share-row">
-                <button class="btn-share" id="shareBtn"><span class="emoji">📤</span> 分享</button>
-            </div>
+
             <div class="company-area">
                 <div class="company-logo"><img src="img/logo11.png" alt="宜春国控" /></div>
                 <div class="company-desc">
                     <span class="first-line">宜春市国有资本控股有限公司成立于2020年5月，是市属现代综合服务型国有企业，公司坚持以市场需求为导向，秉承"专注、可信、优质、高效"的服务宗旨，深耕三大业务板块："专业化检验检测服务"，业务涵盖建设工程检测、环境监测等专业技术服务。"全链条勘测设计服务"，业务涵盖工程建设项目咨询、勘察（含地灾及压覆矿产评估）设计、施工图设计审查、测绘地理信息、环境影响评价及环保验收等专业技术服务；"一站式人力资源服务"，业务涵盖就业咨询、招聘配置、人才引进、劳务派遣、劳务外包、职业培训、建筑领域三类人员、特种作业人员教育培训考试、网络技术，档案管理（涉密文件资料、涉密档案数字化加工）、广告制作等人才综合服务。</span>
                 </div>
+                
                 <div class="company-website-row">
-                    <span class="footer-website" id="websiteLink">访问官网 <span class="arrow">›</span></span>
+                    <span class="footer-website" id="websiteLink">访问官网</span>
                     <span class="footer-copy-tip" id="copyTip">复制后到浏览器打开</span>
+                    <span class="arrow">›</span>
                 </div>
+
                 <div class="company-qr-wrap">
                     <div class="company-qr-box"><img src="img/qrcode.png" alt="二维码" /></div>
                     <div class="company-qr-label">扫码关注我们</div>
                 </div>
-                <div class="company-address-phone">
-                    <span class="addr"><span class="label">地址：</span>江西省宜春市经济技术开发区经发大道26号</span>
-                    <span class="phone"><span class="label">电话：</span>0795-3288195</span>
+                
+                <div class="company-address-row">
+                    <span class="label">地址：</span>江西省宜春市经济技术开发区经发大道26号
                 </div>
-                <div class="company-post"><span class="label">邮编：</span>336600</div>
+                <div class="company-contact-row">
+                    <div class="contact-col"><span class="label">电话：</span>0795-3288195</div>
+                    <div class="contact-col"><span class="label">邮编：</span>336600</div>
+                </div>
+                
             </div>
         </div>
     </div>
 
-    <!-- 分享预览模态框 -->
     <div class="share-modal-overlay" id="shareModalOverlay">
         <div class="share-modal">
             <button class="share-modal-close" id="shareModalClose">✕</button>
             <div class="share-modal-title">📤 分享名片</div>
             <div class="share-card-preview">
-                <div class="preview-img"><img src="img/share-big.png" alt="分享预览" /></div>
+                <div class="preview-img"><img src="https://sss222255555.github.io/card/img/share-big.png" alt="分享预览" /></div>
                 <div class="preview-body">
                     <div class="preview-title">宜春国控·余浩 电子名片</div>
                     <div class="preview-desc">向你推荐了余浩的名片</div>
@@ -228,6 +226,18 @@
         </div>
     </div>
 
+    <div class="share-modal-overlay" id="qrModalOverlay">
+        <div class="share-modal">
+            <button class="share-modal-close" id="qrModalClose">✕</button>
+            <div class="share-modal-title">📱 扫码访问名片</div>
+            <div id="qrcode"></div>
+            <!-- 已删除保存图片按钮 -->
+            <p class="qr-tip">微信内请长按图片识别</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
     <script>
         (function() {
             'use strict';
@@ -235,20 +245,21 @@
             var PAGE_URL = window.location.href;
             var SHARE_TITLE = '宜春国控·余浩 电子名片';
             var SHARE_DESC = '向你推荐了余浩的名片';
-            var SHARE_IMG = 'https://sss222255555.github.io/yichun-card/img/share-big.png';
+            var SHARE_IMG = 'https://sss222255555.github.io/card/img/share-big.png';
 
-            // DOM 引用
             var websiteLink = document.getElementById('websiteLink');
             var copyTip = document.getElementById('copyTip');
             var copyBtn = document.getElementById('copyBtn');
             var callBtn = document.getElementById('callBtn');
-            var saveBtn = document.getElementById('saveBtn');
             var qrBtn = document.getElementById('qrBtn');
             var shareBtn = document.getElementById('shareBtn');
             var modalOverlay = document.getElementById('shareModalOverlay');
             var modalClose = document.getElementById('shareModalClose');
             var modalCopyLinkBtn = document.getElementById('modalCopyLinkBtn');
             var modalShareBtn = document.getElementById('modalShareBtn');
+            var qrModalOverlay = document.getElementById('qrModalOverlay');
+            var qrModalClose = document.getElementById('qrModalClose');
+            var qrCodeContainer = document.getElementById('qrcode');
 
             function showToast(msg) {
                 var existing = document.querySelector('.toast-tip');
@@ -286,8 +297,9 @@
                 var name = document.querySelector('.info-name')?.textContent.trim() || '未知';
                 var title = document.querySelector('.info-title')?.textContent.trim() || '';
                 var dept = document.querySelector('.info-dept')?.textContent.trim() || '';
-                var phone = document.querySelector('.info-contact:nth-of-type(1)')?.textContent.trim() || '';
-                var email = document.querySelector('.info-contact:nth-of-type(2)')?.textContent.trim() || '';
+                var contacts = document.querySelectorAll('.info-contact');
+                var phone = contacts.length > 0 ? contacts[0].textContent.trim() : '';
+                var email = contacts.length > 1 ? contacts[1].textContent.trim() : '';
                 var company = document.querySelector('.info-company')?.textContent.trim() || '';
                 var addr = document.querySelector('.info-address')?.textContent.trim().replace('地址：', '') || '';
                 return { name, title, dept, phone, email, company, addr };
@@ -297,45 +309,54 @@
             if (copyTip) copyTip.addEventListener('click', function(e) { e.preventDefault(); copyText(WEBSITE_URL, '✅ 已复制官网链接'); });
             if (copyBtn) copyBtn.addEventListener('click', function() {
                 var info = getContactInfo();
-                var text = '姓名：' + info.name + '\n职务：' + info.title + '\n职位：' + info.dept + '\n电话：' + info.phone + '\n邮箱：' + info.email + '\n公司：' + info.company + '\n地址：' + info.addr;
+                var text = '姓名：' + info.name + '\n部门：' + info.title + '\n职务：' + info.dept + '\n电话：' + info.phone + '\n邮箱：' + info.email + '\n公司：' + info.company + '\n地址：' + info.addr;
                 copyText(text, '✅ 全部信息已复制');
             });
             if (callBtn) callBtn.addEventListener('click', function() {
                 var phone = getContactInfo().phone || '17370565453';
                 if (confirm('即将拨打：' + phone)) window.location.href = 'tel:' + phone;
             });
-            if (saveBtn) saveBtn.addEventListener('click', function() {
-                var info = getContactInfo();
-                if (navigator.contacts && navigator.contacts.save) {
-                    navigator.contacts.save({ name: [info.name], tel: [info.phone], email: [info.email], organization: [info.company], title: [info.title], address: [{ street: info.addr }] })
-                        .then(function() { showToast('✅ 已保存到通讯录'); })
-                        .catch(function() { downloadVCard(info); });
-                } else { downloadVCard(info); }
+
+            if (qrBtn) qrBtn.addEventListener('click', function() {
+                qrCodeContainer.innerHTML = '';
+                
+                new QRCode(qrCodeContainer, {
+                    text: window.location.href, 
+                    width: 240,
+                    height: 240,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                setTimeout(function() {
+                    var canvas = qrCodeContainer.querySelector('canvas');
+                    if (canvas) {
+                        var imgUrl = canvas.toDataURL("image/png");
+                        qrCodeContainer.innerHTML = '<img src="' + imgUrl + '" alt="二维码" />';
+                    }
+                }, 100); 
+                
+                qrModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
-            function downloadVCard(info) {
-                var vcard = ['BEGIN:VCARD','VERSION:3.0','FN:'+info.name,'N:'+info.name+';;;','ORG:'+info.company,'TITLE:'+info.title+' ('+info.dept+')','TEL;TYPE=CELL:'+info.phone,'EMAIL:'+info.email,'ADR;TYPE=WORK:;;'+info.addr,'END:VCARD'].join('\r\n');
-                try {
-                    var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-                    var url = URL.createObjectURL(blob);
-                    var link = document.createElement('a');
-                    link.href = url;
-                    link.download = info.name + '.vcf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(url);
-                    showToast('✅ 通讯录文件已下载');
-                } catch (e) {
-                    copyText('姓名：'+info.name+'\n电话：'+info.phone+'\n邮箱：'+info.email+'\n公司：'+info.company, '⚠️ 已复制联系人信息，请手动保存');
+
+            if (qrModalClose) qrModalClose.addEventListener('click', function() {
+                qrModalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            qrModalOverlay.addEventListener('click', function(e) {
+                if (e.target === qrModalOverlay) {
+                    qrModalOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
-            }
-            if (qrBtn) qrBtn.addEventListener('click', function() { showToast('📱 扫码关注宜春国控'); });
+            });
 
             function openShareModal() { modalOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
             function closeShareModal() { modalOverlay.classList.remove('active'); document.body.style.overflow = ''; }
             if (modalOverlay) modalOverlay.addEventListener('click', function(e) { if (e.target === modalOverlay) closeShareModal(); });
             if (modalClose) modalClose.addEventListener('click', closeShareModal);
             if (modalCopyLinkBtn) modalCopyLinkBtn.addEventListener('click', function() { copyText(PAGE_URL, '✅ 链接已复制，可粘贴分享'); closeShareModal(); });
+            
             if (modalShareBtn) modalShareBtn.addEventListener('click', function() {
                 closeShareModal();
                 if (navigator.share) {
@@ -347,10 +368,7 @@
                     navigator.share({ title: SHARE_TITLE, text: SHARE_DESC, url: PAGE_URL }).catch(function(err) { if (err.name !== 'AbortError') openShareModal(); });
                 } else { openShareModal(); }
             });
-            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeShareModal(); });
-            var preloadImg = new Image();
-            preloadImg.src = SHARE_IMG;
-            console.log('✅ 分享内容已更新：标题="宜春国控·余浩 电子名片"，描述="向你推荐了余浩的名片"');
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { closeShareModal(); qrModalOverlay.classList.remove('active'); } });
         })();
     </script>
 </body>
